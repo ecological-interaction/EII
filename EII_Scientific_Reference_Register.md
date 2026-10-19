@@ -1,379 +1,512 @@
 # EII — Ecological Indicator Inventory
 
-**Document version:** 0.3.0 · Local review draft · 19 October 2026
-**Work in Progress — Academic Research Resource**
+**Status:** Living reference · Stage A (inventory)  
+**Document version:** 0.1.0  
+**Created:** 2026-10-10  
+**Project:** Ecological Indicator Inventory (EII) — independent of EIRKB, designed for later interoperability  
+**Scope:** Landscape, GIS/remote sensing, point clouds, soil, microbiomes, ecological processes, and socio-ecological context.
+
+
+**Consolidated document version:** 0.4.0 · Local review draft · 19 October 2026  
+**Work in Progress — Academic Research Resource**  
 Jonathan Minchin · Ecological Interaction · [ORCID 0000-0001-8152-1796](https://orcid.org/0000-0001-8152-1796).
 
-## Purpose and reading key
+**Edition note:** The original v0.1.0 text, five-column tables and 120 indicator rows are preserved below. This edition incorporates all 115 additional indicators from the expanded register, without renaming or repeating an established ID. The original version/date fields describe the source edition. Original A–H groups are presentation groups; added groups continue that layout. The 15 scientific domains are retained separately in the classification index below; group letters and ID prefixes do not replace domain membership.
 
-A compact catalogue of 235 scientific and technological indicators across 15 ecological domains, using the table-oriented presentation of v0.1.0 with the expanded coverage retained. The [complete Reference Register](EII_Reference_Register.md) is authoritative and preserves full definitions, classifications, source routes, supporting indicators, references and interpretation limits.
+The complete definitions, measurements, formulas, interpretation limits, supporting indicators, classifications, scientific references and candidate source routes remain in [EII_Machine_Reference.md](EII_Machine_Reference.md). Original wording is retained as historical wording where later source editions qualify it; it is not newly validated. Historical proposals for EIRKB mapping below remain source-edition proposals and are outside current EII interoperability scope. Future IoT and bioinformatics routes remain unassigned. DRM v1.0.0 is the intended methodology; conformance remains unverified.
 
-Each ID links to its full record. “What it measures” describes observations or calculations; “What it indicates” gives a qualified interpretation. Existing text is copied without scientific paraphrase. Domain membership does not determine an indicator’s ID. Family records contain distinct quantities: select the variant and method before using them.
+## 1. Purpose and boundaries
 
-These are curated working definitions, not verified monitoring standards. Measurement, modelled estimates and inference are distinct. There is no universal “higher is better” direction; interpretation requires compatible methods, spatial support, timing and uncertainty. Candidate source routes do not establish that observations exist. Trails4Soil practice crosswalks and PBCKA/EIRKB interoperability remain excluded.
+EII is a **parallel, standalone inventory** of ecological variables, indicators, indices, and inferences. It consolidates the earlier GIS/remote-sensing and bioinformatics discussions into one growing, human-readable Markdown reference. It is **not yet** a validated indicator standard, a database, or an EIRKB module. Scientific verification, bibliographic enrichment, and database implementation belong to later stages.
 
-## Domain index
+**Important distinction:** The previously discussed **21 TRAILS4SOIL items are regenerative management practices**, not 21 verified ecological indicators. Their mappings below are exploratory, not an official programme indicator framework.
 
-| Domain | Scope | Records |
-|---|---|---:|
-| D01 | [Atmosphere and climate](#d01) | 14 |
-| D02 | [Hydrology](#d02) | 21 |
-| D03 | [Soil physics](#d03) | 14 |
-| D04 | [Soil chemistry](#d04) | 12 |
-| D05 | [Soil biology](#d05) | 19 |
-| D06 | [Biodiversity](#d06) | 15 |
-| D07 | [Vegetation](#d07) | 28 |
-| D08 | [Ecological interactions](#d08) | 15 |
-| D09 | [Biogeochemical cycles](#d09) | 20 |
-| D10 | [Landscape ecology](#d10) | 16 |
-| D11 | [Ecosystem functioning](#d11) | 9 |
-| D12 | [Ecological resilience](#d12) | 13 |
-| D13 | [Agricultural ecology](#d13) | 15 |
-| D14 | [Human–ecological systems](#d14) | 13 |
-| D15 | [Planetary and regional boundaries](#d15) | 11 |
+### Reading key
 
-<a id="d01"></a>
+- **M** = directly measurable variable; **D** = derived indicator/index; **P** = proxy; **I** = inference / modelled property; **C** = contextual or pressure variable.
+- **GIS** = GIS / remote sensing; **PC** = photogrammetry / point cloud / LiDAR; **BIO** = DNA/RNA microbiome / bioinformatics; **LAB** = laboratory; **FIELD** = field monitoring; **MODEL** = modelling.
+- These labels describe *common* uses, not exclusive or definitive categories. A property may be measured or inferred by different methods.
+- **IDs are stable**: add new records without renumbering old ones. Gaps are permitted. IDs are local to EII; later database interoperability should use namespaced IDs such as `EII:VEG-001`.
 
-## Atmosphere and climate
+## 2. Consolidated indicator register — Stage A
 
-| ID | Indicator | What it measures | What it indicates |
+### A. Vegetation, photosynthesis and plant condition
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| VEG-001 | Normalised Difference Vegetation Index (NDVI) | D/P | GIS | Photosynthetically active green vegetation proxy; compare seasonal vigour. |
+| VEG-002 | Green Normalised Difference Vegetation Index (GNDVI) | D/P | GIS | Canopy greenness / chlorophyll-related variation. |
+| VEG-003 | Normalised Difference Red Edge Index (NDRE) | D/P | GIS | Chlorophyll and canopy physiology proxy. |
+| VEG-004 | Soil Adjusted Vegetation Index (SAVI) | D/P | GIS | Vegetation signal where soil background is exposed. |
+| VEG-005 | Enhanced Vegetation Index (EVI) | D/P | GIS | Vegetation greenness with background/atmospheric corrections. |
+| VEG-006 | Green–Red Vegetation Index (GRVI) | D/P | GIS | RGB green-versus-red contrast; visible greenness. |
+| VEG-007 | Excess Green (ExG) | D/P | GIS | RGB vegetation segmentation / green cover. |
+| VEG-008 | Visible Atmospherically Resistant Index (VARI) | D/P | GIS | Visible-band greenness under variable atmospheric conditions. |
+| VEG-009 | Green Leaf Index (GLI) | D/P | GIS | RGB green foliage prominence. |
+| VEG-010 | Red–Green–Blue Vegetation Index (RGBVI) | D/P | GIS | RGB vegetation contrast / cover mapping. |
+| VEG-011 | Leaf Area Index (LAI) | M/I | GIS, FIELD, MODEL | Leaf surface area and canopy development. |
+| VEG-012 | Fractional vegetation / ground cover | M/D | GIS, PC, FIELD | Bare-soil protection, habitat and erosion context. |
+| VEG-013 | Canopy chlorophyll content | M/I | GIS, FIELD, LAB | Nutrient / physiological condition, with calibration. |
+| VEG-014 | Above-ground biomass | M/I | PC, GIS, FIELD, MODEL | Productivity, carbon and fuel loading. |
+| VEG-015 | Plant water stress / canopy temperature anomaly | D/I | GIS, FIELD, MODEL | Irrigation, drought and heat response. |
+| VEG-016 | Phenology / green-up / senescence dates | D | GIS, FIELD | Seasonal shifts, climate responses. |
+| VEG-017 | Species / cultivar composition | M/C | FIELD, GIS, BIO | Community identity and agroecological selection. |
+| VEG-018 | Fraction of absorbed PAR | M/I | GIS, FIELD, MODEL | Shows the share of useful light vegetation absorbs. Absorbing light does not mean all of it becomes plant growth. |
+| VEG-019 | Solar-induced chlorophyll fluorescence | D/P | FIELD | Can help study how vegetation responds during photosynthesis. The signal cannot be converted to carbon uptake without a suitable model. |
+| VEG-020 | Leaf water potential/stomatal conductance | M | FIELD | Helps assess plant water status and control of water loss. Time of day, weather and plant type affect the response. |
+| VEG-021 | Plant mortality/recruitment | M | GIS, FIELD | Shows plant deaths and new establishment. Seedlings may not survive to become mature plants. |
+| VEG-022 | Root biomass/depth distribution | M | FIELD | Shows root mass and how deep roots occur. Root mass alone does not measure nutrient or water uptake. |
+
+### B. Land surface, terrain and three-dimensional structure
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| TER-001 | Elevation / digital terrain model | M/D | GIS, PC | Terrain reference for spatial analyses. |
+| TER-002 | Slope gradient | D | GIS, PC | Erosion, access, land-use suitability. |
+| TER-003 | Aspect / slope orientation | D | GIS, PC | Radiation, exposure, microclimate and planting. |
+| TER-004 | Solar radiation / insolation | I | GIS, MODEL | Thermal exposure and species suitability. |
+| TER-005 | Topographic wetness index | D/P | GIS | Potential moisture accumulation, not measured wetness. |
+| TER-006 | Flow accumulation / drainage pathways | D/I | GIS, PC | Runoff routing and catchment connectivity. |
+| TER-007 | Surface roughness | D | PC, GIS | Erosion, habitat and terrain structure. |
+| TER-008 | Terrace geometry / terrace-wall condition | M/D | PC, GIS, FIELD | Historic terrace conservation and restoration. |
+| TER-009 | Erosion rills / gullies / sediment pathways | M/D | PC, GIS, FIELD | Soil loss and intervention prioritisation. |
+| TER-010 | Tree height | M/D | PC, FIELD | Stand development, biomass proxy. |
+| TER-011 | Canopy volume | D | PC | Tree structure and productivity / biomass proxy. |
+| TER-012 | Canopy gaps / crown cover | D | PC, GIS | Regeneration, light availability, habitat structure. |
+| TER-013 | Vertical vegetation complexity | D | PC | Habitat layering and fuel structure. |
+| TER-014 | Surface / canopy change between surveys | D | PC, GIS | Erosion, growth, disturbance or restoration monitoring. |
+| TER-015 | Built structures and landscape geometry | M/C | PC, GIS | Human occupation, material and intervention context. |
+
+### C. Water, hydrology and thermal environment
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| HYD-001 | Surface / root-zone soil moisture | M/I | FIELD, GIS, MODEL | Water availability and drought exposure. |
+| HYD-002 | Normalised Difference Moisture Index (NDMI) | D/P | GIS | Vegetation canopy moisture proxy; index definitions vary. |
+| HYD-003 | Land Surface Temperature (LST) | D/M | GIS | Surface heating and moisture / vegetation stress context. |
+| HYD-004 | Infiltration rate | M | FIELD | Runoff versus soil water entry. |
+| HYD-005 | Soil water-holding capacity | M/I | LAB, FIELD, MODEL | Water retention / crop resilience. |
+| HYD-006 | Stream discharge / river flow | M | FIELD | Water availability, flooding, ecological flow. |
+| HYD-007 | Groundwater level / recharge | M/I | FIELD, MODEL | Aquifer condition and water balance. |
+| HYD-008 | Flood extent / frequency | D/I | GIS, MODEL, FIELD | Exposure and wetland dynamics. |
+| HYD-009 | Water turbidity / suspended sediment | M | FIELD, LAB, GIS | Erosion and water quality. |
+| HYD-010 | Water nutrient concentrations | M | LAB, FIELD | Eutrophication / runoff pressure. |
+| HYD-011 | Water conductivity / salinity / pH | M | FIELD, LAB | Water quality and ecological constraints. |
+| HYD-012 | Evapotranspiration | M/I | GIS, FIELD, MODEL | Water demand and ecosystem flux. |
+| HYD-013 | Dissolved oxygen | M | FIELD | Helps assess whether water contains enough oxygen for aquatic life. Levels can vary with temperature, flow and time of day. |
+| HYD-014 | Water chlorophyll-a | M/P | GIS, FIELD | Helps estimate the amount of microscopic algae in water. Pigment levels and cloudiness can affect the estimate. |
+| HYD-015 | Water temperature | M | GIS, FIELD | Shows thermal conditions for aquatic life. Surface temperature may not represent deeper water. |
+| HYD-016 | Surface-water occurrence/hydroperiod | D | GIS, FIELD | Shows how often or how long surface water is present. Missed observations and hidden soil saturation can affect the result. |
+| HYD-017 | Environmental-flow deficit | D/C | FIELD | Helps identify flows below a locally defined ecological need. The threshold must fit the river and its species. |
+| HYD-018 | Water nutrient load | D/M | FIELD | Shows how much nutrient is carried by water. Storms can carry large amounts that occasional samples miss. |
+| HYD-019 | Faecal indicator bacteria | M/P | FIELD, LAB, BIO | Helps screen for faecal contamination. Indicator bacteria do not identify every pathogen or guarantee that water is safe. |
+| HYD-020 | Water contaminant residues | M/C | FIELD, LAB | Shows named chemical residues in water. Their effects depend on concentration, exposure time, mixtures and organisms. |
+| HYD-021 | Water transparency/Secchi depth | M/P | FIELD | Shows how clear water is. Algae, sediment and dissolved colour can all reduce clarity. |
+| HYD-022 | Ocean carbonate chemistry | M/D | GIS, FIELD, LAB | Helps understand ocean acidity and conditions for shell-forming organisms. One pH reading does not describe the full chemical balance. |
+
+### D. Soil physical and chemical condition
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| SOI-001 | Soil texture | M | LAB, FIELD | Water retention and substrate characteristics. |
+| SOI-002 | Bulk density / compaction | M | FIELD, LAB | Rooting constraints and soil structure. |
+| SOI-003 | Soil aggregate stability | M | FIELD, LAB | Erosion resistance and soil structure. |
+| SOI-004 | Soil porosity | M/D | FIELD, LAB | Aeration, infiltration and rooting. |
+| SOI-005 | Soil organic carbon stock / concentration | M/D | LAB, FIELD, MODEL | Carbon storage and soil condition; distinguish stock vs %. |
+| SOI-006 | Soil pH | M | FIELD, LAB | Nutrient availability and microbial habitat. |
+| SOI-007 | Electrical conductivity / soil salinity | M | FIELD, LAB | Salinity stress. |
+| SOI-008 | Available nitrogen / phosphorus / potassium | M | LAB | Nutrient supply / fertilisation context. |
+| SOI-009 | Cation exchange capacity | M | LAB | Nutrient retention potential. |
+| SOI-010 | Soil respiration / CO₂ efflux | M | FIELD, LAB | Biological activity; not alone a soil-health score. |
+| SOI-011 | Soil temperature | M | FIELD | Biological activity and stress. |
+| SOI-012 | Erosion rate / soil loss | M/I | FIELD, GIS, MODEL | Soil conservation. |
+| SOI-013 | Soil contamination / heavy metals | M | LAB | Pollution pressure and food safety. |
+| SOI-014 | Coarse fragments/soil depth | M | FIELD | Shows soil depth and the amount of stones. Both affect rooting space, water storage and carbon-stock estimates. |
+| SOI-015 | Saturated hydraulic conductivity | M | FIELD | Shows how easily water moves through saturated soil. Small samples may miss channels that carry water quickly in the field. |
+| SOI-016 | Soil matric potential | M | FIELD | Shows how tightly soil holds water. Salt content also affects how easily plants can take it up. |
+| SOI-017 | Macropore abundance/connectivity | M/D | FIELD | Shows large soil pores and how they connect. Their presence alone does not measure actual water or nutrient movement. |
+| SOI-018 | Total soil nitrogen/C:N ratio | M/D | FIELD, LAB | Helps compare total nitrogen and the balance of carbon to nitrogen. This does not directly measure nutrients available to plants. |
+| SOI-019 | Exchangeable sodium percentage/SAR | D/C | FIELD, LAB | Helps screen for sodium levels that may damage soil structure. Salt content and soil minerals also matter. |
+| SOI-020 | Soil inorganic carbon | M/D | FIELD, LAB | Shows carbon stored in soil minerals such as carbonates. More carbonate does not automatically mean more carbon removed from the atmosphere. |
+| SOI-021 | Labile/particulate/mineral-associated organic carbon | M | FIELD, LAB | Helps compare different soil organic-carbon fractions. The fractions do not give an exact lifetime for stored carbon. |
+| SOI-022 | Bioavailable contaminant fraction | M/P | FIELD, LAB | Helps estimate the fraction of a pollutant organisms might absorb. Laboratory extraction is an approximation that needs checking for the organism concerned. |
+| SOI-023 | Soil redox potential | M/P | FIELD, LAB | Helps assess whether soil conditions favour oxygen-dependent or oxygen-poor processes. Small areas within the soil may differ. |
+
+### E. Microbiomes, genetics and soil biological processes
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| MIC-001 | Bacterial community composition | D | BIO | Taxonomic community structure and turnover. |
+| MIC-002 | Archaeal community composition | D | BIO | Archaeal community structure and functional context. |
+| MIC-003 | Fungal community composition | D | BIO | Decomposer, mutualist and pathogen context. |
+| MIC-004 | Protist community composition | D | BIO | Microbial food-web and predation context. |
+| MIC-005 | Microbial alpha diversity | D | BIO | Within-sample richness/evenness; method-dependent. |
+| MIC-006 | Microbial beta diversity | D | BIO | Community differentiation across sites/times. |
+| MIC-007 | Microbial biomass carbon / nitrogen | M | LAB | Living microbial biomass pool. |
+| MIC-008 | Fungal:bacterial abundance ratio | D/P | BIO, LAB | Broad community balance; strongly method-dependent. |
+| MIC-009 | Carbon-degradation gene/pathway potential | I | BIO | Potential decomposition capabilities, not measured flux. |
+| MIC-010 | Nitrogen-fixation genetic potential | I | BIO | Presence/abundance of nitrogen fixation markers. |
+| MIC-011 | Nitrification genetic potential | I | BIO | Potential ammonia oxidation / nitrification pathways. |
+| MIC-012 | Denitrification genetic potential | I | BIO | Potential nitrate reduction pathways; not measured emissions. |
+| MIC-013 | Phosphorus solubilisation / acquisition potential | I | BIO | Genetic potential for P mobilisation / uptake. |
+| MIC-014 | Mycorrhizal community / colonisation | M/D/I | BIO, FIELD, LAB | Root symbiosis and nutrient exchange context. |
+| MIC-015 | Rhizosphere-associated community structure | D | BIO | Plant–microbe relationships. |
+| MIC-016 | Potential plant pathogens / beneficial taxa | I | BIO, LAB | Risk or beneficial associations; confirm function. |
+| MIC-017 | Drought / salinity stress-response gene potential | I | BIO | Community adaptation potential, not proven resilience. |
+| MIC-018 | Pollutant degradation gene potential | I | BIO | Potential biodegradation pathways. |
+| MIC-019 | Extracellular enzyme activity | M | LAB | Specific substrate-processing activity. |
+| MIC-020 | Community turnover along land-use gradients | D | BIO, GIS | Effects of management, soil type and disturbance. |
+| MIC-021 | Spatial microbial community similarity / connectivity | D/I | BIO, GIS | Biogeographic patterns; similarity ≠ dispersal proof. |
+| MIC-022 | Metatranscriptomic expression of functional genes | M/D/I | BIO | Active gene expression at sampling time; not direct process rate. |
+| MIC-023 | Nitrogen mineralisation / nitrification rate | M | LAB, FIELD | Actual process rate for comparison with genetic potential. |
+| MIC-024 | Decomposition / litter mass-loss rate | M | FIELD, LAB | Realised ecosystem process rate. |
+| MIC-025 | Absolute microbial load | M/D | FIELD, LAB, BIO | Helps estimate microbial numbers rather than just relative shares. Recovery and gene copies per cell affect some methods. |
+| MIC-026 | Soil fauna abundance/biomass | M | FIELD, LAB | Shows the number or mass of soil animals. Their roles depend on which groups are present, not just the total. |
+| MIC-027 | Nematode trophic composition | D | FIELD, LAB, BIO | Helps describe the feeding groups of soil nematodes. Sampling and identification affect the picture of the soil food web. |
+| MIC-028 | Metaproteomic functional profile | D/P | FIELD, LAB, BIO | Shows proteins detected in a microbial sample. Protein detection alone does not measure how quickly a process is running. |
+| MIC-029 | Metabolomic profile | M/D | FIELD, LAB, BIO | Shows chemicals present in a biological sample. Their amounts reflect both production and use, not just one process rate. |
+| MIC-030 | Microbial carbon-use efficiency | D/M | FIELD, LAB, BIO | Helps estimate how microbes divide carbon between growth and respiration. Results depend on the test conditions and substrate used. |
+
+### F. Biodiversity, habitat and ecological interactions
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| BIO-001 | Species richness | D | FIELD, BIO, GIS | Number of detected taxa in defined sampling design. |
+| BIO-002 | Species abundance / occupancy | M/I | FIELD, BIO, MODEL | Population status and distribution. |
+| BIO-003 | Shannon / Simpson diversity | D | FIELD, BIO | Richness/evenness summary. |
+| BIO-004 | Functional diversity | D | FIELD, BIO | Trait and ecological role diversity. |
+| BIO-005 | Habitat area / quality | D/I | GIS, FIELD | Conservation condition. |
+| BIO-006 | Landscape fragmentation / patch size | D | GIS | Habitat continuity and edge exposure. |
+| BIO-007 | Habitat connectivity / corridor suitability | D/I | GIS, MODEL | Potential movement and dispersal pathways. |
+| BIO-008 | Pollinator abundance / visitation | M | FIELD | Pollination activity / crop support. |
+| BIO-009 | Predation / natural pest-control rate | M | FIELD | Biological control process. |
+| BIO-010 | Invasive species presence / spread | M/D | FIELD, GIS, BIO | Ecological risk and management priorities. |
+| BIO-011 | Indicator / threatened species occurrence | M | FIELD, BIO | Conservation planning. |
+| BIO-012 | Acoustic biodiversity / soundscape indices | D/P | FIELD | Biological activity proxy; validate against taxa. |
+| BIO-013 | Food-web / interaction network structure | D/I | FIELD, BIO, MODEL | Ecological relationships; sampling bias matters. |
+| BIO-014 | Environmental-DNA taxon detection | M/D | BIO | Helps detect organisms from DNA left in water, soil or other samples. DNA may travel or remain after an organism has gone. |
+| BIO-015 | Genetic diversity/population differentiation | D | BIO | Shows genetic variation within and between populations. Past population changes and sampling can also explain genetic differences. |
+| BIO-016 | Population growth/recruitment/survival | M/I | BIO, MODEL | Helps track population growth, new individuals and survival. Movement and missed detections must also be considered. |
+| BIO-017 | Community-weighted traits | D | BIO | Shows the typical traits of the organisms present, weighted by abundance. Missing trait data can bias the result. |
+| BIO-018 | Freshwater macroinvertebrate composition | M/D | BIO | Helps assess aquatic communities and river condition. Habitat, season and the sampling method affect interpretation. |
+| BIO-019 | Live coral cover/bleaching prevalence | M | GIS | Shows living coral cover or how common bleaching is. Habitat maps alone cannot establish either measure. |
+| BIO-020 | Mangrove extent/condition | D/M | GIS | Shows mangrove extent and measured condition. Stable area does not necessarily mean unchanged health or function. |
+
+### G. Disturbance, climate and landscape change
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| DIS-001 | Normalised Burn Ratio (NBR) | D/P | GIS | Burn severity / disturbance mapping with calibration. |
+| DIS-002 | Fire fuel load / vertical continuity | M/I | PC, GIS, FIELD | Wildfire behaviour potential. |
+| DIS-003 | Fire occurrence / recurrence | D | GIS, FIELD | Disturbance history. |
+| DIS-004 | Land-cover / land-use class | D/C | GIS, FIELD | Habitat and management context. |
+| DIS-005 | Land-cover transition rate | D | GIS | Abandonment, urbanisation, reforestation. |
+| DIS-006 | Air temperature / precipitation | M | FIELD, GIS | Climate baseline and anomalies. |
+| DIS-007 | Drought index / aridity | D/I | GIS, MODEL | Water stress and future suitability. |
+| DIS-008 | Heatwave / frost frequency | D | FIELD, GIS, MODEL | Climate extremes and crop risk. |
+| DIS-009 | Soil/vegetation recovery after disturbance | D/I | GIS, FIELD | Resilience and restoration tracking. |
+| DIS-010 | Future climate exposure / suitability | I | MODEL, GIS | Scenario-based long-term planning. |
+| DIS-011 | SAR-derived inundation / surface change | D/P | GIS | Flooding and land-surface change in cloudy conditions. |
+| DIS-012 | Hyperspectral material / vegetation trait signatures | D/P | GIS | Fine spectral differentiation; ground truth required. |
+
+### H. Ecosystem functioning, agriculture and human context
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| FUN-001 | Primary productivity (GPP/NPP) | M/I | GIS, FIELD, MODEL | Ecosystem carbon uptake and biomass production. |
+| FUN-002 | Carbon sequestration / stock change | D/I | LAB, FIELD, GIS, MODEL | Carbon dynamics; distinguish pools and fluxes. |
+| FUN-003 | Nutrient retention / leaching | M/I | FIELD, LAB, MODEL | Pollution mitigation and nutrient cycling. |
+| FUN-004 | Crop yield / yield stability | M/D | FIELD | Production and climate resilience. |
+| FUN-005 | Groundcover persistence | D | GIS, FIELD | Soil protection through the year. |
+| FUN-006 | Grazing pressure / stocking intensity | M/C | FIELD, GIS | Vegetation and soil management pressure. |
+| FUN-007 | Irrigation / fertiliser / pesticide input | M/C | FIELD | Management pressure and resource efficiency. |
+| FUN-008 | Field-margin / hedgerow length and condition | D | GIS, FIELD | Habitat, erosion control and landscape structure. |
+| FUN-009 | Human settlement / roads / infrastructure | C | GIS, PC | Accessibility, fragmentation and design context. |
+| FUN-010 | Material / biomass availability | M/I | GIS, FIELD, MODEL | Potential local production and circular resource flows. |
+| FUN-011 | Ecological footprint / resource demand | D/I | MODEL | Socio-ecological pressure at defined system boundary. |
+| FUN-012 | Composite soil-health index | D | LAB, FIELD, BIO | Multimetric condition assessment; specify exact framework. |
+| FUN-013 | Ecosystem condition / integrity index | D/I | GIS, FIELD, MODEL | Multi-indicator ecological condition. |
+| FUN-014 | Planetary / regional boundary exceedance | D/I | MODEL | System-level sustainability constraints; scale dependent. |
+| FUN-015 | Net ecosystem metabolism | D/M | FIELD | Shows the balance between ecosystem production and respiration. Water movement and gas exchange must be included in aquatic estimates. |
+| FUN-016 | Trophic transfer efficiency | D/M | BIO | Helps estimate how much production passes between feeding levels. The ratio of standing biomass is not the same as energy-transfer efficiency. |
+| FUN-017 | Ecosystem multifunctionality | D | FIELD | Combines evidence about several ecosystem functions. The selected functions and scoring method affect the result. |
+| FUN-018 | Water purification/removal efficiency | D/M | FIELD | Shows how much of a named pollutant a system removes. Dilution or temporary storage should not be counted as permanent removal. |
+| FUN-019 | Thermal regulation effect | D/M | GIS | Helps assess cooling associated with vegetation or habitat. Comparable weather and control locations are needed to isolate the effect. |
+| FUN-020 | Soil-function deficit profile | D | FIELD | Shows which soil functions fall below chosen references. Different functions may show different strengths and weaknesses. |
+
+### I. Atmosphere and climate
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| ATM-001 | Air temperature | M | FIELD | Shows local heat and cold conditions. Nearby shade, exposure and sensor placement affect readings. |
+| ATM-002 | Precipitation amount/intensity | M | FIELD | Shows water arriving as rain or snow and how quickly it falls. One gauge may not represent a whole watershed. |
+| ATM-003 | Relative humidity/vapour-pressure deficit | M/D | FIELD | Helps assess how strongly the air can draw water from plants. This does not show how dry the soil is. |
+| ATM-004 | Photosynthetically active radiation | M | FIELD | Shows light available for photosynthesis. The amount plants absorb and use also depends on the canopy and plant condition. |
+| ATM-005 | Wind speed/direction | M | FIELD | Helps assess exposure, drying and possible spread of fire or airborne material. Shelter and measurement height affect readings. |
+| ATM-006 | Atmospheric CO₂ concentration | M | FIELD | Shows carbon dioxide in the air. Local concentration changes do not directly measure carbon uptake or release by an ecosystem. |
+| ATM-007 | Ozone exposure | M/D/C | FIELD | Helps assess ozone exposure that could harm plants. Actual damage depends on plant type, timing and ozone uptake. |
+| ATM-008 | PM₂.₅/PM₁₀ concentration | M/C | FIELD | Shows the amount of fine airborne particles. Particle mass alone does not identify their chemicals or where they came from. |
+| ATM-009 | Snow cover/snow water equivalent | M/D | GIS, FIELD | Helps assess snow-covered area and stored meltwater. Snow cover alone does not show how much water the snow contains. |
+
+### J. Ecological interactions
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| INT-001 | Pollen deposition/pollen limitation | M | FIELD, LAB | Helps assess pollen delivery and whether extra pollen improves reproduction. Water and nutrient shortages can also limit seed production. |
+| INT-002 | Fruit/seed set | M/D | FIELD, LAB | Shows how many flowers produce fruits or seeds. Pollination, weather, nutrition and damage all affect the result. |
+| INT-003 | Herbivory rate | M | FIELD, LAB | Shows plant tissue eaten or damaged by herbivores. Existing damage may not reflect the current feeding rate. |
+| INT-004 | Competition effect | D/M | FIELD, LAB | Tests whether neighbours reduce a plant's growth or reproduction. Finding species together does not prove competition. |
+| INT-005 | Facilitation effect | D/M | FIELD, LAB | Tests whether one organism helps another grow or survive. The benefit can change with conditions and life stage. |
+| INT-006 | Mycorrhizal nutrient transfer | M | FIELD, LAB, BIO | Tests nutrient transfer associated with root fungi. Fungal presence alone does not prove transfer or benefit to the plant. |
+| INT-007 | Seed dispersal/removal | M | FIELD, LAB, BIO | Shows how seeds move or disappear. Removed seeds may be eaten rather than dispersed successfully. |
+| INT-008 | Diet/trophic-link evidence | M/D | FIELD, LAB, BIO | Helps identify feeding relationships. DNA and isotope evidence need careful interpretation to estimate dietary contributions. |
+| INT-009 | Disease suppression in bioassays | M | FIELD, LAB, BIO | Tests whether a soil or microbial treatment reduces disease. A successful laboratory test does not guarantee the same field result. |
+
+### K. Biogeochemical cycles
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| CYC-001 | Net ecosystem CO₂ exchange | M/D | FIELD, LAB | Shows net carbon dioxide exchange between an ecosystem and air. Harvests and other carbon movements are needed for a full carbon balance. |
+| CYC-002 | N₂O flux | M | FIELD, LAB | Shows nitrous oxide released or taken up. Short-lived emission bursts can be missed by occasional measurements. |
+| CYC-003 | Methane flux | M | FIELD, LAB | Shows net methane exchange. Production, consumption and gas movement all contribute to the measured result. |
+| CYC-004 | Biological nitrogen-fixation rate | M | FIELD, LAB, BIO | Measures nitrogen added through biological fixation. Scaling a small test to a field introduces uncertainty. |
+| CYC-005 | Denitrification rate | M | FIELD, LAB | Measures conversion of nitrate into nitrogen gases. Nitrous oxide alone does not show the whole process. |
+| CYC-006 | Phosphorus mineralisation rate | M | FIELD, LAB | Measures release of inorganic phosphorus from organic material. Binding to soil and microbial uptake can affect the net result. |
+| CYC-007 | Nitrogen/phosphorus balance | D/M | FIELD, LAB | Shows whether recorded nutrient inputs exceed outputs. Missing losses or inputs can distort the balance. |
+| CYC-008 | Nutrient resorption efficiency | D/M | FIELD, LAB | Shows how much nutrient plants recover before leaves fall. Leaf mass changes and sampling time affect the estimate. |
+| CYC-009 | Measured contaminant transformation | M | FIELD, LAB | Tests whether a pollutant is transformed. Disappearance alone may mean storage or movement, and breakdown products may still be harmful. |
+| CYC-010 | Dissolved organic carbon export | D/M | FIELD, LAB | Shows carbon carried away in dissolved form by water. Concentration alone does not show the total amount exported. |
+
+### L. Landscape ecology
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| LAN-001 | Edge density/core habitat area | D | GIS | Shows habitat edges and remaining interior areas. Effects depend on the species and the distance at which edges matter. |
+| LAN-002 | Landscape composition/diversity | D | GIS | Shows the mix of land or habitat types. A varied landscape does not automatically contain more species or work better ecologically. |
+| LAN-003 | Riparian buffer extent/continuity | D | GIS, PC | Shows the width and continuity of vegetation beside water. Width alone does not prove effective nutrient filtering or flood protection. |
+| LAN-004 | Barrier density/permeability | D/I/C | GIS, PC, MODEL | Shows obstacles to movement and how passable they may be. The same barrier can affect different species differently. |
+| LAN-005 | Burned/converted area by habitat | D/C | GIS | Shows how much of each habitat has burned or changed use. Errors in habitat and event maps affect the totals. |
+| LAN-006 | Topographic position/terrain curvature | D/C | GIS, PC | Helps describe ridges, hollows and curved slopes. Terrain shape suggests conditions but does not directly measure soil properties. |
+
+### M. Ecological resilience
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| RES-001 | Disturbance resistance | D | GIS | Shows how much a measured property changes during disturbance. Resistance may differ between species, soils and functions. |
+| RES-002 | Recovery rate/time | D/I | GIS, MODEL | Shows how quickly a measured property returns towards a reference. The chosen baseline and survey timing affect recovery estimates. |
+| RES-003 | Temporal variability/stability | D | GIS | Shows how much a property varies over time. A consistently degraded system can also have low variability. |
+| RES-004 | Response diversity/asynchrony | D | BIO | Shows whether species respond differently over time. Different responses may help buffer change, but this needs actual time-series evidence. |
+| RES-005 | Post-fire compositional/function recovery | D | GIS, BIO | Tracks species and functions after fire. Green cover can return before the original community or functions recover. |
+| RES-006 | Early-warning time-series signals | D/I | FIELD | Flags patterns that might precede a major change. Noise and changing external conditions can produce false warnings. |
+| RES-007 | Scenario sensitivity/model uncertainty | D/I | MODEL | Shows how predictions change with scenarios and assumptions. The tested models may not cover every source of uncertainty. |
+
+### N. Agricultural ecology
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| AGR-001 | Agronomic nitrogen-use efficiency | D | FIELD | Helps compare crop output or response per nitrogen input. The chosen efficiency measure does not directly show nitrogen losses. |
+| AGR-002 | Crop water productivity | D | FIELD | Shows crop output per amount of water supplied or used. Higher farm efficiency does not necessarily mean less basin-wide water consumption. |
+| AGR-003 | Pesticide hazard/risk indicator | D/I/C | FIELD, MODEL | Helps screen pesticide hazards or modelled risks. Applied mass alone does not describe toxicity or actual exposure. |
+| AGR-004 | Pest population/crop damage | M/C | FIELD | Shows pest numbers or crop damage. Trap counts do not directly tell us the likely yield loss. |
+| AGR-005 | Crop disease incidence/severity | M/C | FIELD, BIO | Shows how common or severe crop disease is. Similar symptoms can have non-disease causes, so diagnosis matters. |
+| AGR-006 | Crop/rotation diversity | D/C | FIELD | Shows the variety of crops and rotations. Diversity alone does not prove better yields, resilience or lower input use. |
+| AGR-007 | Land equivalent ratio | D | FIELD | Compares land productivity of mixed crops with separate crops. The comparison needs suitable reference yields and comparable inputs. |
+| AGR-008 | Harvest nutrient removal | D/M | FIELD | Shows nutrients removed in harvests. Other nutrient inputs and losses are needed for the whole farm balance. |
+| AGR-009 | Forage utilisation/feed dependence | D/C | FIELD | Helps assess forage use and reliance on imported feed. Trampling, waste and impacts outside the farm also matter. |
+| AGR-010 | Tillage/traffic disturbance intensity | M/C | FIELD | Shows recorded disturbance from machinery or tillage. Actual effects need soil measurements, not just counts of operations. |
+| AGR-011 | Farm nutrient/energy balance | D | FIELD | Shows farm nutrient and energy inputs and outputs. Missing imports, losses and differences in products can change the comparison. |
+
+### O. Human–ecological systems
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| HUM-001 | Impervious surface fraction | D/C | GIS, MODEL | Shows how much ground is sealed. Runoff also depends on drainage connections and whether some built surfaces let water through. |
+| HUM-002 | Land-use intensity | M/D/C | GIS, MODEL | Helps compare the intensity of recorded land use. Land-use names alone do not show the level of pressure. |
+| HUM-003 | Material-flow account/circularity | D/C | MODEL | Shows material use and recycling. A high recycled share does not necessarily mean low overall resource demand. |
+| HUM-004 | Energy demand/return | M/D/C | MODEL | Shows energy demand or energy returned for the investment. Energy sources and the services produced affect fair comparisons. |
+| HUM-005 | Water withdrawal/consumption | M/D/C | MODEL | Shows water taken from sources and water not returned. Withdrawal and consumption have different effects on water availability. |
+| HUM-006 | Lifecycle greenhouse-gas intensity | D/I/C | MODEL | Helps compare climate emissions per product or service. Results depend on which lifecycle stages and emissions are included. |
+| HUM-007 | Artificial light at night | M/C | MODEL | Shows artificial light exposure at night. Satellite brightness may differ from the light experienced by organisms. |
+| HUM-008 | Anthropogenic noise exposure | M/C | MODEL | Shows exposure to human-made noise. Different species hear different frequencies and may respond differently. |
+| HUM-009 | Resource import dependence | D/C | MODEL | Shows reliance on resources from outside an area. Import dependence alone does not establish environmental sustainability. |
+
+### P. Planetary and regional boundaries
+
+| EII ID | Variable / indicator | Kind | Main approaches | Typical interpretation / use |
+|---|---|---|---|---|
+| PB-001 | Atmospheric CO₂/radiative forcing control variables | M/I/C | MODEL | Helps compare global climate pressures with a stated framework. Local carbon dioxide readings are not a global boundary measure. |
+| PB-002 | Biosphere genetic/functional integrity controls | I/C | MODEL | Helps assess large-scale loss of biodiversity and ecosystem function. Local species counts cannot represent the whole global picture. |
+| PB-003 | Biogeochemical N/P control variables | D/I/C | MODEL | Helps assess large-scale human changes to nitrogen and phosphorus flows. A farm nutrient surplus is a different measure. |
+| PB-004 | Freshwater blue/green change controls | D/I/C | GIS, MODEL | Helps assess large-scale changes in river flows and soil moisture. Water withdrawals and drought indices measure different things. |
+| PB-005 | Land-system change control variables | D/C | GIS, MODEL | Helps assess changes in forest or biome extent. Tree cover alone does not show native forest condition. |
+| PB-006 | Stratospheric ozone | M/D | MODEL | Helps assess the ozone layer's protection. Ozone near the ground is a different environmental issue. |
+| PB-007 | Novel-entity releases/assessment coverage | D/C | MODEL | Helps track releases of new chemicals and how well they are assessed. No single safe concentration applies to all substances. |
+| PB-008 | Ocean acidification control variable | D/C | GIS, MODEL | Helps assess ocean chemistry affecting shell formation. Local pH alone cannot establish the global boundary measure. |
+| PB-009 | Atmospheric aerosol loading control variable | D/C | MODEL | Helps assess large-scale airborne particle effects. Particle mass and their effect on sunlight are different measures. |
+| PB-010 | Regional ecological threshold departure | D/I | MODEL | Shows departure from a locally justified ecological threshold. Global thresholds cannot be transferred automatically to a region. |
+
+## 3. Observation platforms and information products
+
+This section records **methods and source data, not additional indicators**.
+
+| Method / platform | Primary outputs | Typical linked EII groups |
+|---|---|---|
+| RGB drone / ground camera | Red, green, blue reflectance/intensity; orthomosaics | VEG, TER, DIS |
+| Multispectral camera | Red, green, red-edge, NIR bands | VEG, HYD |
+| Thermal imaging | Radiometric surface temperature | HYD, VEG, DIS |
+| Hyperspectral sensing | Dense spectral signatures | DIS, VEG, SOI |
+| Satellite SAR | Radar backscatter / interferometric products | HYD, DIS, TER |
+| LiDAR / structure-from-motion | Point clouds, DSM/DTM, geometry | TER, DIS, VEG |
+| Weather / hydrology stations | Temperature, precipitation, flow, humidity | HYD, DIS |
+| Soil sensors / laboratory | Moisture, pH, nutrients, carbon, density | SOI, HYD |
+| Amplicon sequencing (16S/ITS/18S) | Taxonomic marker reads | MIC, BIO |
+| Shotgun metagenomics | Community DNA, gene/pathway profiles | MIC |
+| Metatranscriptomics | Community RNA / expressed genes | MIC |
+| Enzyme assays / process measurements | Activity and flux rates | MIC, SOI, FUN |
+| Field ecology / acoustic surveys | Species observations, interactions, recordings | BIO |
+| Historical maps / cadastral records | Past land use, terraces, occupation | TER, DIS, FUN |
+
+## 4. TRAILS4SOIL regenerative practices: exploratory indicator crosswalk
+
+**Historical material only:** This pasted crosswalk is retained verbatim for preservation. It is excluded from the active EII indicator inventory and does not establish current interoperability or verified programme indicators.
+
+**Provenance note:** The following 21 practice categories were recalled from the earlier bioinformatics discussion; exact official naming and programme scope **require verification**. These are **management practices**, not a canonical set of 21 measured indicators. Crosswalks are hypotheses for study design, not validated causal links.
+
+| # | Practice category (provisional wording) | Candidate EII indicators | Potential microbiome contribution |
 |---|---|---|---|
-| <a id="ter-004"></a>[TER-004](EII_Reference_Register.md#ter-004) | Solar radiation | Radiometer measurements or terrain/atmosphere radiation models, W/m² or MJ/m²/day. | Helps explain how much solar energy reaches a place. Estimates based only on terrain do not account fully for clouds. |
-| <a id="hyd-003"></a>[HYD-003](EII_Reference_Register.md#hyd-003) | Land surface temperature | Thermal radiance corrected for atmosphere and emissivity, K or °C; record acquisition time. | Shows how warm the land surface is. It differs from air temperature and cannot identify water stress on its own. |
-| <a id="dis-006"></a>[DIS-006](EII_Reference_Register.md#dis-006) | Air temperature and rainfall | Shielded air thermometer, °C; gauge accumulation, mm per interval; record height/exposure and catch corrections. | Helps describe weather and longer-term patterns. Short records cannot establish a reliable long-term climate baseline. |
-| <a id="dis-007"></a>[DIS-007](EII_Reference_Register.md#dis-007) | Drought and dryness indices | SPI from precipitation, SPEI from climatic water balance, or P/PET aridity; specify index, window and baseline. | Helps compare dry conditions. A rainfall shortage, dry soil and low river flow may not occur at the same time. |
-| <a id="dis-008"></a>[DIS-008](EII_Reference_Register.md#dis-008) | Heatwave and frost frequency | Temperature series and event rule, events/year or days/year; distinguish air frost from plant-tissue exposure. | Shows how often defined heat or frost events occur. Plant damage also depends on timing, duration and plant type. |
-| <a id="atm-001"></a>[ATM-001](EII_Reference_Register.md#atm-001) | Air temperature | Shielded calibrated sensor, °C; averages require declared interval. | Shows local heat and cold conditions. Nearby shade, exposure and sensor placement affect readings. |
-| <a id="atm-002"></a>[ATM-002](EII_Reference_Register.md#atm-002) | Rainfall and snowfall | Gauge/radar observations, mm and mm/h; snow and wind require corrections. | Shows water arriving as rain or snow and how quickly it falls. One gauge may not represent a whole watershed. |
-| <a id="atm-003"></a>[ATM-003](EII_Reference_Register.md#atm-003) | Air humidity and drying demand | Calibrated temperature/RH, %; calculate VPD, kPa, with stated temperature basis. | Helps assess how strongly the air can draw water from plants. This does not show how dry the soil is. |
-| <a id="atm-004"></a>[ATM-004](EII_Reference_Register.md#atm-004) | Light for photosynthesis | Quantum sensor, µmol photons/m²/s, commonly 400–700 nm; integrate daily separately. | Shows light available for photosynthesis. The amount plants absorb and use also depends on the canopy and plant condition. |
-| <a id="atm-005"></a>[ATM-005](EII_Reference_Register.md#atm-005) | Wind speed and direction | Calibrated anemometer, m/s and degrees, with averaging/gust convention. | Helps assess exposure, drying and possible spread of fire or airborne material. Shelter and measurement height affect readings. |
-| <a id="atm-006"></a>[ATM-006](EII_Reference_Register.md#atm-006) | Atmospheric CO₂ concentration | Calibrated gas analyser, µmol/mol or ppm, with dry-air convention. | Shows carbon dioxide in the air. Local concentration changes do not directly measure carbon uptake or release by an ecosystem. |
-| <a id="atm-007"></a>[ATM-007](EII_Reference_Register.md#atm-007) | Ozone exposure | Calibrated analyser, nmol/mol; dose/exposure metrics require declared threshold and time window. | Helps assess ozone exposure that could harm plants. Actual damage depends on plant type, timing and ozone uptake. |
-| <a id="atm-008"></a>[ATM-008](EII_Reference_Register.md#atm-008) | Fine airborne particles | Gravimetric/reference-calibrated sensor, µg/m³, with humidity and averaging metadata. | Shows the amount of fine airborne particles. Particle mass alone does not identify their chemicals or where they came from. |
-| <a id="atm-009"></a>[ATM-009](EII_Reference_Register.md#atm-009) | Snow cover and stored water | Mapped snow fraction, %; snow depth/density survey or retrieval, mm water equivalent. | Helps assess snow-covered area and stored meltwater. Snow cover alone does not show how much water the snow contains. |
+| 1 | Groundcovers | VEG-012, FUN-005, SOI-005 | MIC-001–006, MIC-020 |
+| 2 | Cover crops | VEG-017, SOI-008, FUN-005 | MIC-010, MIC-013, MIC-015 |
+| 3 | Mulching | HYD-001, SOI-005, SOI-011 | MIC-009, MIC-019, MIC-024 |
+| 4 | Organic amendments | SOI-005, SOI-008, SOI-010 | MIC-007, MIC-009, MIC-019 |
+| 5 | Minimum tillage | SOI-002, SOI-003, SOI-005 | MIC-003, MIC-008, MIC-014 |
+| 6 | Permanent cover | VEG-012, FUN-005, SOI-012 | MIC-005, MIC-020 |
+| 7 | Planting green | VEG-012, SOI-008, HYD-001 | MIC-015, MIC-020 |
+| 8 | Mechanical groundcover control | VEG-012, SOI-002, FUN-005 | MIC-020 |
+| 9 | Intercropping | VEG-017, BIO-004, FUN-004 | MIC-005, MIC-014, MIC-015 |
+| 10 | Crop-rotation diversity | VEG-017, SOI-008, FUN-004 | MIC-005, MIC-006, MIC-020 |
+| 11 | Nutrient strategies | SOI-008, FUN-003 | MIC-010–013, MIC-023 |
+| 12 | Weed control | VEG-012, VEG-017, FUN-007 | MIC-020 |
+| 13 | Plant protection | BIO-009, FUN-007 | MIC-016 |
+| 14 | Field margins / buffers | FUN-008, BIO-005, BIO-008 | MIC-020, MIC-021 |
+| 15 | Biodiversity structures | BIO-001, BIO-005, BIO-007 | MIC-005, MIC-021 |
+| 16 | Forest curtains / shelterbelts | TER-013, BIO-005, FUN-008 | MIC-003, MIC-014 |
+| 17 | Grazing | FUN-006, SOI-002, VEG-012 | MIC-001–008, MIC-020 |
+| 18 | Animal-feed rotations | FUN-004, FUN-006, VEG-017 | MIC-010, MIC-020 |
+| 19 | Permanent grassland | VEG-012, SOI-005, BIO-004 | MIC-003, MIC-014, MIC-020 |
+| 20 | Precision farming | HYD-001, SOI-008, VEG-001 | MIC-020 as spatial validation layer |
+| 21 | Modelling / digital twins / remote sensing | DIS-010, FUN-013, VEG-001 | MIC profiles as optional model input |
 
-<a id="d02"></a>
+## 5. Cross-domain questions and example indicator combinations
 
-## Hydrology
+| Research question | Combined indicator families | Main caution |
+|---|---|---|
+| Where are drought-resilient tree guilds suitable? | TER-003/004, HYD-001/005, SOI-001/006, DIS-007/010, VEG-017 | Suitability requires species traits and scenario validation. |
+| Which terraces are most vulnerable to erosion? | TER-002/008/009, VEG-012, HYD-004, SOI-003, DIS-006 | Terrain indices alone cannot establish actual erosion rate. |
+| Does reduced tillage improve soil functioning? | SOI-003/005/010, MIC-003/008/019/023/024 | Use controls, repeat samples and actual process measurements. |
+| Which areas offer pollinator habitat? | BIO-008, BIO-005/007, FUN-008, VEG-016/017 | Floral resources and seasonal continuity matter. |
+| Where is wildfire risk concentrated? | DIS-002/003/007, TER-002/003, TER-013, VEG-014 | Hazard, exposure and vulnerability are distinct. |
+| Can DNA identify active nitrogen cycling? | MIC-010/011/012/022/023, SOI-008, HYD-001 | DNA potential ≠ RNA expression ≠ realised flux. |
+| How has abandonment altered the landscape? | DIS-004/005, TER-008/014, VEG-012/016, FUN-009 | Historical map georeferencing uncertainty. |
 
-| ID | Indicator | What it measures | What it indicates |
+## 6. Proposed record schema for later interoperability
+
+EII stays in Markdown for now. Each record could later be normalised into CSV/SQLite/JSON-LD with these fields:
+
+| Field | Purpose |
+|---|---|
+| `eii_id` | Stable namespaced identifier (`EII:MIC-010`) |
+| `preferred_label` / `aliases` | Human-readable name and synonyms |
+| `entity_kind` | Variable, index, proxy, inference, contextual factor |
+| `domain` / `related_domains` | Primary and secondary categories |
+| `definition` | Operational definition and limitations |
+| `unit` / `formula` | Unit and computation where applicable |
+| `observed_property` | What the measurement actually records |
+| `methods` / `platforms` | Sampling, instruments, processing pipelines |
+| `spatial_scale` / `temporal_scale` | Resolution and applicable time horizon |
+| `data_requirements` | Input bands, samples, reference datasets |
+| `uncertainty` / `validation` | Error sources and ground-truth requirements |
+| `reference_ids` | Bibliographic cross-references; later EIRKB mapping |
+| `dataset_ids` / `place_ids` | External dataset and geospatial references |
+| `related_eii_ids` | Dependencies, derived products and links |
+| `provenance` / `review_status` | Source and evidence status |
+
+**Interoperability principle:** Do not duplicate the EIRKB bibliographic catalogue. Later use explicit mappings from `EII:*` to EIRKB reference identifiers, Zotero keys/DOIs, and GIS-compatible dataset/feature IDs. No live EIRKB link is implied at this stage.
+
+## 7. Source and verification register (starter)
+
+The inventory consolidates **previous conversation-derived working lists**. They are not independently validated against every source in this edition.
+
+| Source ID | Source / framework | Relevance | Status |
 |---|---|---|---|
-| <a id="ter-005"></a>[TER-005](EII_Reference_Register.md#ter-005) | Topographic wetness index | ln(a/tan β), where a is specific contributing area and β slope; dimensionless with declared algorithm. | Suggests where water may collect because of terrain. It does not measure actual soil moisture. |
-| <a id="ter-006"></a>[TER-006](EII_Reference_Register.md#ter-006) | Runoff pathways | Hydrologically conditioned DTM and routing algorithm, cells or m²; declare sink handling. | Suggests where runoff may flow. Drains, soil absorption and underground water can change the actual route. |
-| <a id="hyd-001"></a>[HYD-001](EII_Reference_Register.md#hyd-001) | Soil moisture | Gravimetric mass ratio or calibrated volumetric sensors, g/g or m³/m³; satellite retrievals estimate different depth/support. | Helps assess water available in soil. Plants' access also depends on soil type, root depth and how tightly water is held. |
-| <a id="hyd-006"></a>[HYD-006](EII_Reference_Register.md#hyd-006) | River flow | Velocity–area gauging or calibrated stage–discharge relation, m³/s. | Shows how much water moves through a stream. This helps assess water supply and flooding, but measurement accuracy varies with flow conditions. |
-| <a id="hyd-007"></a>[HYD-007](EII_Reference_Register.md#hyd-007) | Groundwater level and recharge | Well water level, m relative to datum; recharge estimated with water-balance, tracer or hydraulic methods, mm/year. | Shows changes in groundwater level or estimates water entering an aquifer. Pumping and underground flows must also be considered. |
-| <a id="hyd-008"></a>[HYD-008](EII_Reference_Register.md#hyd-008) | Flood area and frequency | Validated event masks, km²; event counts or statistical recurrence, events/year or years. | Shows where and how often flooding was recorded. Past observations alone do not predict the timing of the next flood. |
-| <a id="hyd-009"></a>[HYD-009](EII_Reference_Register.md#hyd-009) | Water cloudiness and suspended sediment | Nephelometer response, FNU/NTU; filtered dry sediment mass, mg/L; convert only with local calibration. | Helps assess cloudiness and sediment in water. Cloudiness cannot be converted to sediment mass without local testing. |
-| <a id="hyd-010"></a>[HYD-010](EII_Reference_Register.md#hyd-010) | Water nutrient concentrations | Laboratory/sensor nitrate, ammonium, phosphate or total N/P, mg N/L or mg P/L; specify filtration and method. | Shows nutrient levels in water and possible enrichment. The amount carried downstream also depends on water flow. |
-| <a id="hyd-011"></a>[HYD-011](EII_Reference_Register.md#hyd-011) | Water salts and acidity | Conductivity at reference temperature, µS/cm; salinity on declared scale; pH with calibrated electrode. | Helps assess salt content and acidity. Conductivity does not identify individual pollutants or provide a universal measure of salinity. |
-| <a id="hyd-012"></a>[HYD-012](EII_Reference_Register.md#hyd-012) | Evaporation and transpiration | Lysimeter/flux observations or energy/water-balance model, mm/day; distinguish actual ET from reference ET. | Helps assess water lost through evaporation and plants. Estimates need weather and surface information, and differ from potential water demand. |
-| <a id="dis-011"></a>[DIS-011](EII_Reference_Register.md#dis-011) | Radar-detected flooding and change | Calibrated radar backscatter, dB, and declared classification/change algorithm, area or index. | Helps detect flooding or surface changes using radar. Soil moisture, vegetation and surface texture can produce similar signals. |
-| <a id="hyd-013"></a>[HYD-013](EII_Reference_Register.md#hyd-013) | Dissolved oxygen | Calibrated optical/electrochemical probe or titration, mg/L and % saturation, with temperature/salinity. | Helps assess whether water contains enough oxygen for aquatic life. Levels can vary with temperature, flow and time of day. |
-| <a id="hyd-014"></a>[HYD-014](EII_Reference_Register.md#hyd-014) | Water chlorophyll-a | Extracted pigment assay, µg/L; fluorescence/remote retrievals need calibration. | Helps estimate the amount of microscopic algae in water. Pigment levels and cloudiness can affect the estimate. |
-| <a id="hyd-015"></a>[HYD-015](EII_Reference_Register.md#hyd-015) | Water temperature | Calibrated profile/probe, °C. | Shows thermal conditions for aquatic life. Surface temperature may not represent deeper water. |
-| <a id="hyd-016"></a>[HYD-016](EII_Reference_Register.md#hyd-016) | Surface-water presence and duration | Valid water detections/valid observations, %; continuous gauge/time series for days inundated. | Shows how often or how long surface water is present. Missed observations and hidden soil saturation can affect the result. |
-| <a id="hyd-017"></a>[HYD-017](EII_Reference_Register.md#hyd-017) | Ecological flow shortfall | Discharge series and justified seasonal reference, m³/s, deficit duration or volume. | Helps identify flows below a locally defined ecological need. The threshold must fit the river and its species. |
-| <a id="hyd-018"></a>[HYD-018](EII_Reference_Register.md#hyd-018) | Nutrients carried by water | Time-resolved concentration × discharge, kg N/P/day; integrate with appropriate sampling. | Shows how much nutrient is carried by water. Storms can carry large amounts that occasional samples miss. |
-| <a id="hyd-019"></a>[HYD-019](EII_Reference_Register.md#hyd-019) | Faecal indicator bacteria | Validated assay, CFU/100 mL, MPN/100 mL or gene copies with method separated. | Helps screen for faecal contamination. Indicator bacteria do not identify every pathogen or guarantee that water is safe. |
-| <a id="hyd-020"></a>[HYD-020](EII_Reference_Register.md#hyd-020) | Chemical residues in water | Validated chemical analysis, µg/L, with recovery and detection limits. | Shows named chemical residues in water. Their effects depend on concentration, exposure time, mixtures and organisms. |
-| <a id="hyd-021"></a>[HYD-021](EII_Reference_Register.md#hyd-021) | Water clarity | Disk visibility depth, m, recording light and viewing conditions. | Shows how clear water is. Algae, sediment and dissolved colour can all reduce clarity. |
-| <a id="hyd-022"></a>[HYD-022](EII_Reference_Register.md#hyd-022) | Ocean carbonate chemistry | Paired measured carbonate-system quantities, µmol/kg, with temperature/salinity; calculate pH or saturation consistently. | Helps understand ocean acidity and conditions for shell-forming organisms. One pH reading does not describe the full chemical balance. |
+| CONV-GIS-20261007 | GIS and Remote Sensing Scope discussion | Spectral indices, terrain, land cover, ecology, human occupation | Consolidated; check technical definitions |
+| CONV-PC-20261007 | Point Cloud from Aerial Scan discussion | 3D structure, terraces, canopy, erosion, repeat surveys | Consolidated; check technical definitions |
+| CONV-BIO-20261010 | Bioinformatics Overview discussion | Microbial taxa, functions, stress, soil process inference | Consolidated; check against primary literature |
+| CONV-EII-20261010 | Ecological Indicators Compilation discussion | 15-domain scope and measurement/inference distinction | Consolidated |
+| FRAME-EBV | Essential Biodiversity Variables | Candidate biodiversity classification crosswalk | To research |
+| FRAME-ECV | Essential Climate Variables | Candidate climate classification crosswalk | To research |
+| FRAME-EOV | Essential Ocean Variables | Candidate aquatic/ocean classification crosswalk | To research |
+| FRAME-SEEA | UN System of Environmental-Economic Accounting — Ecosystem Accounting | Ecosystem extent, condition and services | To research |
+| FRAME-SOIL | EU soil monitoring / soil health frameworks | Soil condition metrics | To research |
+| FRAME-PB | Planetary Boundaries framework | Regional/global pressure and boundary metrics | To research |
+| FRAME-T4S | TRAILS4SOIL programme | Verify practice taxonomy and official indicator lists | **Unverified** |
 
-<a id="d03"></a>
+## 8. Editorial rules and roadmap
 
-## Soil physics
+1. **Stage A — Inventory (current):** Expand coverage, de-duplicate synonyms, separate indicators from methods, pressures and practices; retain stable IDs.
+2. **Stage B — Scientific definitions:** Add formulas, units, sampling protocols, scale, reference standards, DOI/Zotero references, validation and evidence grading.
+3. **Stage C — Relationships and inference:** Link observation → measurement → index → ecological process → interpretation, marking inferential confidence.
+4. **Stage D — Place-based applications:** Add location-specific applicability, GIS layers, climate analogues and intervention use cases.
 
-| ID | Indicator | What it measures | What it indicates |
-|---|---|---|---|
-| <a id="ter-007"></a>[TER-007](EII_Reference_Register.md#ter-007) | Surface roughness | Survey heights and declared RMS, standard deviation or rugosity metric, m or ratio. | Shows how uneven the soil surface is. This can affect runoff and habitats, depending on the size of the features measured. |
-| <a id="ter-009"></a>[TER-009](EII_Reference_Register.md#ter-009) | Erosion channels | Mapped lengths, depths, areas or volumes, m, m² or m³, from repeat surveys. | Shows where concentrated erosion has formed channels. A single survey cannot tell us the annual amount of soil lost. |
-| <a id="hyd-004"></a>[HYD-004](EII_Reference_Register.md#hyd-004) | Infiltration rate | Infiltrometer volume/time/area, mm/h; distinguish initial, steady and saturated regimes. | Shows how quickly water enters soil. The result depends on the test and how wet the soil was beforehand. |
-| <a id="hyd-005"></a>[HYD-005](EII_Reference_Register.md#hyd-005) | Soil water storage | Water retained at declared matric potentials; available water often θfield-capacity−θwilting, m³/m³ or mm over depth. | Helps estimate how much water soil can store for plants. Root depth and the chosen laboratory test affect the estimate. |
-| <a id="soi-001"></a>[SOI-001](EII_Reference_Register.md#soi-001) | Soil texture | Sand/silt/clay mass percentages by declared dispersion and size limits. | Helps explain soil drainage and water storage. Soil structure and organic matter also affect these properties. |
-| <a id="soi-002"></a>[SOI-002](EII_Reference_Register.md#soi-002) | Soil density and compaction | Oven-dry soil mass/core volume, g/cm³; penetration resistance, MPa, at stated water content. | Helps identify compacted soil and possible restrictions on roots. Results depend on soil type and moisture. |
-| <a id="soi-003"></a>[SOI-003](EII_Reference_Register.md#soi-003) | Soil aggregate stability | Wet-sieving stable fraction, % or mean-weight diameter, mm; declare pretreatment. | Shows how well soil clumps resist breaking apart. This helps assess erosion risk, but different tests may give different results. |
-| <a id="soi-004"></a>[SOI-004](EII_Reference_Register.md#soi-004) | Soil pore space | Measured pore volumes or 1−bulk-density/particle-density, fraction; record particle-density assumption. | Shows how much pore space soil contains. Total pore space alone does not show how easily air and water can move. |
-| <a id="soi-011"></a>[SOI-011](EII_Reference_Register.md#soi-011) | Soil temperature | Calibrated probe, °C, with depth and recording interval. | Helps explain conditions for roots and soil organisms. Temperature near the surface may differ from deeper soil. |
-| <a id="soi-012"></a>[SOI-012](EII_Reference_Register.md#soi-012) | Soil erosion rate | Runoff plots, sediment budgets or erosion models, Mg/ha/year; distinguish gross erosion from sediment delivery. | Helps assess how much soil is being lost or moved. Predicted erosion risk is different from measured soil loss. |
-| <a id="soi-014"></a>[SOI-014](EII_Reference_Register.md#soi-014) | Stones and soil depth | Field cores/pits, %, cm; distinguish rock, roots and fine earth. | Shows soil depth and the amount of stones. Both affect rooting space, water storage and carbon-stock estimates. |
-| <a id="soi-015"></a>[SOI-015](EII_Reference_Register.md#soi-015) | Water movement through saturated soil | Permeameter or field hydraulic test, mm/h or m/s with geometry specified. | Shows how easily water moves through saturated soil. Small samples may miss channels that carry water quickly in the field. |
-| <a id="soi-016"></a>[SOI-016](EII_Reference_Register.md#soi-016) | Soil water tension | Tensiometer/validated sensor, kPa, at declared depth; specify sign convention. | Shows how tightly soil holds water. Salt content also affects how easily plants can take it up. |
-| <a id="soi-017"></a>[SOI-017](EII_Reference_Register.md#soi-017) | Large soil pores | Imaging, dye tracing or pore analysis, fraction and declared connectivity metric. | Shows large soil pores and how they connect. Their presence alone does not measure actual water or nutrient movement. |
+### Known gaps for subsequent Stage A expansions
 
-<a id="d04"></a>
+Freshwater ecology and aquatic eDNA; marine/coastal indicators; soil fauna and nematodes; animal behaviour and movement; ecosystem services; atmospheric pollutants; geochemistry and geological substrates; disease ecology; socio-ecological governance; environmental justice; explicit biogeochemical fluxes; conservation status; ecological network metrics; regional and planetary boundaries; cross-scale temporal indicators.
 
-## Soil chemistry
+### Version history
 
-| ID | Indicator | What it measures | What it indicates |
-|---|---|---|---|
-| <a id="soi-005"></a>[SOI-005](EII_Reference_Register.md#soi-005) | Soil organic carbon | Organic C assay, g/kg; stock from C, compatible density, layer thickness and coarse fragments, Mg C/ha. | Shows organic carbon concentration or the amount stored in a soil layer. Repeated, comparable stock measurements are needed to show accumulation. |
-| <a id="soi-006"></a>[SOI-006](EII_Reference_Register.md#soi-006) | Soil pH | Electrode response, pH units; declare water/salt extract and soil:solution ratio. | Helps explain nutrient availability and conditions for soil organisms. pH alone does not tell us whether soil is fertile. |
-| <a id="soi-007"></a>[SOI-007](EII_Reference_Register.md#soi-007) | Soil salinity | Conductivity, dS/m, with temperature and extraction basis; distinguish ECe and bulk apparent EC. | Helps screen for salt stress. Moisture, clay and the test method also affect conductivity readings. |
-| <a id="soi-008"></a>[SOI-008](EII_Reference_Register.md#soi-008) | Available soil nutrients | Specified mineral-N extraction, P test and exchangeable-K assay, mg/kg with nutrient basis declared. | Helps assess potential nutrient supply to crops. Results depend on the soil test, season and crop needs. |
-| <a id="soi-009"></a>[SOI-009](EII_Reference_Register.md#soi-009) | Nutrient-holding capacity | Displacement/exchange assay, cmolc/kg; distinguish effective and buffered potential CEC. | Helps assess soil's ability to hold nutrient ions. The nutrients actually present and soil acidity also matter. |
-| <a id="soi-013"></a>[SOI-013](EII_Reference_Register.md#soi-013) | Soil contaminants | Validated chemical assay, mg/kg dry soil; report analyte, fraction and detection limits. | Shows the amount of a named pollutant in soil. Total concentration alone does not show how much organisms can absorb. |
-| <a id="soi-018"></a>[SOI-018](EII_Reference_Register.md#soi-018) | Total soil nitrogen and carbon:nitrogen ratio | Elemental assays, g N/kg and dimensionless C:N, with matching sample basis. | Helps compare total nitrogen and the balance of carbon to nitrogen. This does not directly measure nutrients available to plants. |
-| <a id="soi-019"></a>[SOI-019](EII_Reference_Register.md#soi-019) | Soil sodium indices | ESP=100 exchangeable Na/CEC; SAR=Na/√((Ca+Mg)/2) with standard concentration basis. | Helps screen for sodium levels that may damage soil structure. Salt content and soil minerals also matter. |
-| <a id="soi-020"></a>[SOI-020](EII_Reference_Register.md#soi-020) | Soil mineral carbon | Carbonate/inorganic C assay, g C/kg; stocks need depth/density/coarse fractions. | Shows carbon stored in soil minerals such as carbonates. More carbonate does not automatically mean more carbon removed from the atmosphere. |
-| <a id="soi-021"></a>[SOI-021](EII_Reference_Register.md#soi-021) | Soil organic-carbon fractions | Declared oxidation or physical fractionation, g C/kg; record size/density cut-offs and recoveries. | Helps compare different soil organic-carbon fractions. The fractions do not give an exact lifetime for stored carbon. |
-| <a id="soi-022"></a>[SOI-022](EII_Reference_Register.md#soi-022) | Potentially available contaminants | Specified extraction, porewater or organism assay, mg/kg or µg/L. | Helps estimate the fraction of a pollutant organisms might absorb. Laboratory extraction is an approximation that needs checking for the organism concerned. |
-| <a id="soi-023"></a>[SOI-023](EII_Reference_Register.md#soi-023) | Soil oxidation–reduction conditions | Calibrated redox electrodes, mV with reference electrode, pH, depth and equilibration. | Helps assess whether soil conditions favour oxygen-dependent or oxygen-poor processes. Small areas within the soil may differ. |
+- **0.1.0 — 2026-10-10:** Initial EII Markdown inventory. Merged GIS, point-cloud, bioinformatics and ecological-indicator discussion lists; added provisional TRAILS4SOIL practices crosswalk, stable local IDs and future interoperability schema.
 
-<a id="d05"></a>
+## 9. Scientific domain classification — consolidated edition
 
-## Soil biology
+Each indicator has one home domain. This index preserves the expanded 15-domain classification without duplicating indicator records.
 
-| ID | Indicator | What it measures | What it indicates |
-|---|---|---|---|
-| <a id="soi-010"></a>[SOI-010](EII_Reference_Register.md#soi-010) | Soil respiration | Chamber/infrared gas flux, µmol CO₂/m²/s, or incubation mass C/kg/time; identify roots and heterotrophs when possible. | Shows carbon dioxide released from soil by roots and organisms. A high rate can reflect activity or carbon loss, rather than better soil health. |
-| <a id="mic-001"></a>[MIC-001](EII_Reference_Register.md#mic-001) | Bacterial community | 16S/shotgun reads assigned to taxa, proportions; absolute cells/g require independent calibration. | Shows which bacterial groups were detected and their relative shares. DNA read counts do not directly show cell numbers or activity. |
-| <a id="mic-002"></a>[MIC-002](EII_Reference_Register.md#mic-002) | Archaeal community | Archaeal marker or shotgun assignments, proportions/copies with method declared. | Shows which archaeal groups were detected. Their presence does not prove that they are carrying out a particular process. |
-| <a id="mic-003"></a>[MIC-003](EII_Reference_Register.md#mic-003) | Fungal community | ITS/shotgun assignments and relative profiles; record reference release and guild assignment confidence. | Shows which fungal groups were detected. This can guide further study, but does not establish their effects on plants or decomposition. |
-| <a id="mic-004"></a>[MIC-004](EII_Reference_Register.md#mic-004) | Protist community | 18S/shotgun assignments, relative profiles under stated pipeline. | Shows which protist groups were detected. Their ecological roles need additional evidence, not just species identification. |
-| <a id="mic-005"></a>[MIC-005](EII_Reference_Register.md#mic-005) | Microbial diversity within a sample | ASV/taxon table and specified richness, Shannon or Hill metric; standardise coverage and filtering. | Helps compare microbial diversity within samples. More diversity does not always mean better soil function. |
-| <a id="mic-006"></a>[MIC-006](EII_Reference_Register.md#mic-006) | Microbial differences between samples | Taxon profiles and declared Bray–Curtis, Jaccard, UniFrac or compositional distance. | Shows how different microbial communities are between samples. Sampling methods and environmental differences can affect the comparison. |
-| <a id="mic-007"></a>[MIC-007](EII_Reference_Register.md#mic-007) | Microbial biomass | Fumigation-extraction or specified biomass assay, mg C or N/kg dry soil, with conversion factors. | Estimates the size of the living microbial carbon or nitrogen pool. A larger pool does not necessarily mean faster or more efficient processes. |
-| <a id="mic-008"></a>[MIC-008](EII_Reference_Register.md#mic-008) | Fungal:bacterial ratio | PLFA biomarkers, calibrated qPCR or other declared abundance measures, ratio; avoid raw cross-marker read ratios. | Helps compare fungal and bacterial signals within the same test method. The ratio alone does not diagnose soil health. |
-| <a id="mic-019"></a>[MIC-019](EII_Reference_Register.md#mic-019) | Soil enzyme activity | Fluorometric/colorimetric product formation per dry soil mass/time, nmol/g/h; declare substrate, pH and temperature. | Shows how quickly enzymes act in a laboratory test. The same process may run at a different rate in the field. |
-| <a id="mic-020"></a>[MIC-020](EII_Reference_Register.md#mic-020) | Microbial changes across land uses | Matched taxon profiles and land-use data, dissimilarity/effect size with repeated or paired design. | Shows how microbial communities differ across land uses. Soil type, location and season can also explain differences. |
-| <a id="mic-021"></a>[MIC-021](EII_Reference_Register.md#mic-021) | Microbial similarity across places | Taxon dissimilarity versus geographic/environmental distance; connectivity only with explicit model or tracing evidence. | Shows how microbial communities vary across places. Similar communities do not prove that microbes move between them. |
-| <a id="mic-022"></a>[MIC-022](EII_Reference_Register.md#mic-022) | Microbial gene expression | RNA reads with stated normalisation and matched DNA abundance where possible; report preservation and controls. | Shows which genes were being expressed when a sample was taken. This is not a direct measurement of the resulting process rate. |
-| <a id="mic-025"></a>[MIC-025](EII_Reference_Register.md#mic-025) | Microbial numbers | Calibrated flow counts, spike-in sequencing or validated qPCR, cells/g or copies/g; gene copies are not automatically cells. | Helps estimate microbial numbers rather than just relative shares. Recovery and gene copies per cell affect some methods. |
-| <a id="mic-026"></a>[MIC-026](EII_Reference_Register.md#mic-026) | Soil animal numbers and biomass | Standardised cores/extraction/hand sorting, individuals/m² or g/m², with depth and season. | Shows the number or mass of soil animals. Their roles depend on which groups are present, not just the total. |
-| <a id="mic-027"></a>[MIC-027](EII_Reference_Register.md#mic-027) | Nematode feeding groups | Extracted counts and validated guild assignment, proportions; derived indices require stated rules. | Helps describe the feeding groups of soil nematodes. Sampling and identification affect the picture of the soil food web. |
-| <a id="mic-028"></a>[MIC-028](EII_Reference_Register.md#mic-028) | Microbial protein profile | Mass-spectrometry peptide identifications/intensities with reference database and false-discovery control. | Shows proteins detected in a microbial sample. Protein detection alone does not measure how quickly a process is running. |
-| <a id="mic-029"></a>[MIC-029](EII_Reference_Register.md#mic-029) | Biological metabolite profile | Targeted/untargeted assays, molar concentration or normalised intensity; distinguish confirmed from putative identities. | Shows chemicals present in a biological sample. Their amounts reflect both production and use, not just one process rate. |
-| <a id="mic-030"></a>[MIC-030](EII_Reference_Register.md#mic-030) | Microbial carbon-use efficiency | Growth and respiration from matched tracer/assay, growth/(growth+respiration) where applicable, fraction. | Helps estimate how microbes divide carbon between growth and respiration. Results depend on the test conditions and substrate used. |
+| Domain | Scope | Indicator ranges | Records |
+|---|---|---|---:|
+| D01 | Atmosphere and climate | TER-004, HYD-003, DIS-006–008, ATM-001–009 | 14 |
+| D02 | Hydrology | TER-005–006, HYD-001, HYD-006–022, DIS-011 | 21 |
+| D03 | Soil physics | TER-007, TER-009, HYD-004–005, SOI-001–004, SOI-011–012, SOI-014–017 | 14 |
+| D04 | Soil chemistry | SOI-005–009, SOI-013, SOI-018–023 | 12 |
+| D05 | Soil biology | SOI-010, MIC-001–008, MIC-019–022, MIC-025–030 | 19 |
+| D06 | Biodiversity | BIO-001–005, BIO-010–012, BIO-014–020 | 15 |
+| D07 | Vegetation | VEG-001–022, TER-010–013, HYD-002, DIS-012 | 28 |
+| D08 | Ecological interactions | MIC-014–016, BIO-008–009, BIO-013, INT-001–009 | 15 |
+| D09 | Biogeochemical cycles | MIC-009–013, MIC-018, MIC-023–024, FUN-002–003, CYC-001–010 | 20 |
+| D10 | Landscape ecology | TER-001–003, TER-008, TER-014, BIO-006–007, DIS-004–005, FUN-008, LAN-001–006 | 16 |
+| D11 | Ecosystem functioning | FUN-001, FUN-012–013, FUN-015–020 | 9 |
+| D12 | Ecological resilience | MIC-017, DIS-001–003, DIS-009–010, RES-001–007 | 13 |
+| D13 | Agricultural ecology | FUN-004–007, AGR-001–011 | 15 |
+| D14 | Human–ecological systems | TER-015, FUN-009–011, HUM-001–009 | 13 |
+| D15 | Planetary and regional boundaries | FUN-014, PB-001–010 | 11 |
 
-<a id="d06"></a>
+## 10. Scientific references — consolidated edition
 
-## Biodiversity
+These references support the stated definitions or framework connections. Specialist entries without an individual protocol citation remain working definitions. Specific inference limits are retained beside each indicator. Framework-defined thresholds require a stated version and regional justification.
 
-| ID | Indicator | What it measures | What it indicates |
-|---|---|---|---|
-| <a id="bio-001"></a>[BIO-001](EII_Reference_Register.md#bio-001) | Species richness | Standardised taxon detections and effort, species count; state coverage and taxonomic resolution. | Shows how many species were detected. Sampling effort and missed species affect the total. |
-| <a id="bio-002"></a>[BIO-002](EII_Reference_Register.md#bio-002) | Species numbers and occupancy | Counts/density and repeated detection histories; occupancy estimated with an explicit detection model, individuals/area or probability. | Helps assess population size or the likelihood a species uses a place. Failure to detect a species does not prove absence. |
-| <a id="bio-003"></a>[BIO-003](EII_Reference_Register.md#bio-003) | Species diversity indices | H=−Σp ln p; Simpson specify concentration Σp², complement or reciprocal; dimensionless. | Summarises species diversity and how evenly individuals are distributed. Compare only results using the same index and sampling approach. |
-| <a id="bio-004"></a>[BIO-004](EII_Reference_Register.md#bio-004) | Trait diversity | Trait values, abundance weights and declared metric such as functional dispersion or Rao Q. | Shows how varied organisms' traits are. Trait diversity alone does not measure the processes those organisms perform. |
-| <a id="bio-005"></a>[BIO-005](EII_Reference_Register.md#bio-005) | Habitat area and condition | Validated habitat polygons, ha; quality from explicit field attributes/reference model, declared units. | Shows habitat extent or its condition for a stated purpose. A mapped habitat class is not suitable for every species. |
-| <a id="bio-010"></a>[BIO-010](EII_Reference_Register.md#bio-010) | Invasive species presence and spread | Verified occurrence/cover maps and repeat surveys, area or km/year; distinguish non-native from invasive. | Shows where a named invasive species is present or spreading. Presence alone does not measure its ecological damage. |
-| <a id="bio-011"></a>[BIO-011](EII_Reference_Register.md#bio-011) | Species of conservation interest | Validated observations or eDNA detections with blanks, date, coordinates and status-list version. | Helps locate species of conservation interest. Missed detections and local habitat needs must also be considered. |
-| <a id="bio-012"></a>[BIO-012](EII_Reference_Register.md#bio-012) | Biological sounds | Calibrated recordings and a specified acoustic index, dimensionless; distinguish classified calls from generic sound metrics. | Helps compare biological sounds and activity. Rain, wind and human noise can affect the result; sound indices are not species counts. |
-| <a id="bio-014"></a>[BIO-014](EII_Reference_Register.md#bio-014) | Environmental DNA detections | Validated sequence/qPCR detections with field/extraction blanks and replicates, detection or copies/volume. | Helps detect organisms from DNA left in water, soil or other samples. DNA may travel or remain after an organism has gone. |
-| <a id="bio-015"></a>[BIO-015](EII_Reference_Register.md#bio-015) | Population genetic diversity | Genotypes, heterozygosity, nucleotide diversity or FST with locus/sample design recorded. | Shows genetic variation within and between populations. Past population changes and sampling can also explain genetic differences. |
-| <a id="bio-016"></a>[BIO-016](EII_Reference_Register.md#bio-016) | Population growth and survival | Repeated counts, marked individuals or age cohorts; λ, recruits/area/time and survival probability. | Helps track population growth, new individuals and survival. Movement and missed detections must also be considered. |
-| <a id="bio-017"></a>[BIO-017](EII_Reference_Register.md#bio-017) | Typical community traits | Species trait table and comparable abundance weights; units of the selected trait. | Shows the typical traits of the organisms present, weighted by abundance. Missing trait data can bias the result. |
-| <a id="bio-018"></a>[BIO-018](EII_Reference_Register.md#bio-018) | Freshwater invertebrate community | Kick/core sampling and identification, abundance and declared region-specific index if used. | Helps assess aquatic communities and river condition. Habitat, season and the sampling method affect interpretation. |
-| <a id="bio-019"></a>[BIO-019](EII_Reference_Register.md#bio-019) | Live coral cover and bleaching | Validated transect/photo observations, % with depth and denominator stated. | Shows living coral cover or how common bleaching is. Habitat maps alone cannot establish either measure. |
-| <a id="bio-020"></a>[BIO-020](EII_Reference_Register.md#bio-020) | Mangrove area and condition | Validated maps, ha; field canopy, mortality or salinity observations in declared units. | Shows mangrove extent and measured condition. Stable area does not necessarily mean unchanged health or function. |
+| Key | Primary / authoritative reference | Documentary scope |
+|---|---|---|
+| R01 | [USGS — Landsat Enhanced Vegetation Index](https://www.usgs.gov/landsat-missions/landsat-enhanced-vegetation-index) | Standard EVI formula and band/scaling context; documentary check, not local validation. Relevant entries: Enhanced vegetation index (EVI). |
+| R02 | [USGS — Landsat Normalized Burn Ratio](https://www.usgs.gov/landsat-missions/landsat-normalized-burn-ratio) | NBR formula and product context; not universal severity thresholds. Relevant entries: Burn ratio (NBR). |
+| R03 | [FAO — SOC stock calculation sub-protocol, Annex 4](https://www.fao.org/fileadmin/user_upload/GSP/MRV/GSP_MRV_Protocol_A4_EN_002.pdf) | SOC stock inputs and compatible density/coarse-fragment basis. Relevant entries: Soil organic carbon. |
+| R04 | [EMBL-EBI — MGnify](https://www.ebi.ac.uk/about/teams/microbiome-informatics/mgnify/) | Taxonomic and functional-potential outputs, versioned pipelines; no project dataset accession bound. Relevant entries: Bacterial community, Archaeal community, Fungal community, Protist community, Carbon-breakdown genes, Microbial gene expression. |
+| R05 | [Vandeputte et al. (2017) — Quantitative microbiome profiling](https://www.nature.com/articles/nature24460) | Primary study on relative versus quantitative abundance; gut study supports the compositional measurement caution, not soil-specific effect claims. Relevant entries: Bacterial community, Fungal:bacterial ratio, Microbial numbers. |
+| R06 | [GEO BON — EBV strategy v2](https://geobon.org/downloads/governance-documents/Essential_Biodiversity_Variable_Strategy_v2.pdf) | Biodiversity observation framework; no claim that EII entries are certified EBVs. Relevant entries: Domain 6. |
+| R07 | [WMO/GCOS — About Essential Climate Variables](https://gcos.wmo.int/site/global-climate-observing-system-gcos/essential-climate-variables/about-essential-climate-variables) | Climate observation framework; no one-to-one ECV crosswalk established. Relevant entries: Domain 1. |
+| R08 | [UN — SEEA Ecosystem Accounting](https://seea.un.org/en/methodology/ecosystem-accounting) | Extent/condition/function accounting framework; EII composites remain locally specified. Relevant entries: Domain 11. |
+| R09 | [Richardson et al. (2023) — Earth beyond six of nine planetary boundaries](https://doi.org/10.1126/sciadv.adh2458) | Historical framework reference for control-variable families; not a current boundary-status assessment or a local allocation method. Relevant entries: Domain 15. |
+| R11 | [USGS — Normalized Difference Moisture Index](https://www.usgs.gov/landsat-missions/normalized-difference-moisture-index) | NIR/SWIR vegetation-moisture contrast and product context. Relevant entries: Canopy moisture index (NDMI). |
+| R12 | [USGS — Scaling Landsat Collection 2 Level 2 Data](https://www.usgs.gov/software/scaling-landsat-collection-2-level-2-data) | Reflectance scaling before vegetation-index calculation and thermal conversion. Relevant entries: Vegetation greenness (NDVI). |
+| R10 | [USGS — Dissolved Oxygen and Water](https://www.usgs.gov/water-science-school/science/dissolved-oxygen-and-water) | Dissolved oxygen as a water-quality variable and ecological context. Relevant entries: Dissolved oxygen. |
 
-<a id="d07"></a>
 
-## Vegetation
+### Consolidated edition history
 
-| ID | Indicator | What it measures | What it indicates |
-|---|---|---|---|
-| <a id="veg-001"></a>[VEG-001](EII_Reference_Register.md#veg-001) | Vegetation greenness (NDVI) | (NIR-red)/(NIR+red), dimensionless, from masked surface-reflectance bands. | Helps compare how green vegetation is and how it changes through the seasons. Greenness alone does not prove plant health. |
-| <a id="veg-002"></a>[VEG-002](EII_Reference_Register.md#veg-002) | Green vegetation index (GNDVI) | (NIR-green)/(NIR+green), dimensionless reflectance ratio. | Can help track changes in leaf pigments. Plant type and the amount of leaf cover also affect the result. |
-| <a id="veg-003"></a>[VEG-003](EII_Reference_Register.md#veg-003) | Red-edge vegetation index (NDRE) | (NIR-rededge)/(NIR+rededge), dimensionless; record exact band wavelengths. | Can help compare leaf pigment levels in a canopy. Different sensors and plant types need careful comparison. |
-| <a id="veg-004"></a>[VEG-004](EII_Reference_Register.md#veg-004) | Soil-adjusted vegetation index (SAVI) | (1+L)(NIR-red)/(NIR+red+L), dimensionless; declare L and reflectance scaling. | Helps identify vegetation where bare soil is visible. Soil colour can still affect the result. |
-| <a id="veg-005"></a>[VEG-005](EII_Reference_Register.md#veg-005) | Enhanced vegetation index (EVI) | 2.5(NIR-red)/(NIR+6red-7.5blue+1), dimensionless, for the standard three-band form. | Helps compare vegetation greenness, including dense canopies. Clouds and image processing can still affect it. |
-| <a id="veg-006"></a>[VEG-006](EII_Reference_Register.md#veg-006) | Green–red vegetation index (GRVI) | (green-red)/(green+red), dimensionless; calibrated RGB preferred. | Helps identify green vegetation in colour images. Shadows and camera settings can change the result. |
-| <a id="veg-007"></a>[VEG-007](EII_Reference_Register.md#veg-007) | Excess green (ExG) | 2g-r-b using normalised RGB channels, dimensionless; record normalisation and threshold. | Helps separate green plants from their background in photographs. Lighting affects how well this works. |
-| <a id="veg-008"></a>[VEG-008](EII_Reference_Register.md#veg-008) | Visible vegetation index (VARI) | (green-red)/(green+red-blue), dimensionless; mask near-zero denominators. | Helps estimate green cover from colour images. Different light and atmospheric conditions can still affect it. |
-| <a id="veg-009"></a>[VEG-009](EII_Reference_Register.md#veg-009) | Green leaf index (GLI) | (2green-red-blue)/(2green+red+blue), dimensionless. | Helps identify green leaves in photographs. Shadows and camera calibration matter. |
-| <a id="veg-010"></a>[VEG-010](EII_Reference_Register.md#veg-010) | RGB vegetation index (RGBVI) | (green²-red×blue)/(green²+red×blue), dimensionless; record channel treatment. | Helps distinguish vegetation from other surfaces in colour images. It does not directly measure plant growth or leaf pigments. |
-| <a id="veg-011"></a>[VEG-011](EII_Reference_Register.md#veg-011) | Leaf Area Index (LAI) | Leaf area and ground area, m²/m²; destructive sampling, optical gap inversion or calibrated remote estimation. | Shows how much leaf area a canopy has, helping us understand light interception. Overlapping leaves can make estimates less accurate. |
-| <a id="veg-012"></a>[VEG-012](EII_Reference_Register.md#veg-012) | Vegetation cover | Point-intercept counts or classified pixels, fraction or %; distinguish green, total, ground and crown cover. | Shows how much ground vegetation covers. This helps assess exposed soil, but cover alone does not reveal plant diversity or biomass. |
-| <a id="veg-013"></a>[VEG-013](EII_Reference_Register.md#veg-013) | Chlorophyll content | Pigment extraction, calibrated chlorophyll meters or spectral inversion, mg/m²; meter units require calibration. | Helps assess the amount of green pigment in leaves. Differences can reflect nutrition, stress, leaf age or plant type. |
-| <a id="veg-014"></a>[VEG-014](EII_Reference_Register.md#veg-014) | Above-ground biomass | Harvest dry mass, kg/m² or Mg/ha; inventories and LiDAR require validated allometry. | Shows how much plant material is present above ground. Carbon and fire-fuel estimates need information about plant type and dry mass. |
-| <a id="veg-015"></a>[VEG-015](EII_Reference_Register.md#veg-015) | Plant water stress and canopy temperature | Thermal radiance converted to temperature and reference temperature, °C difference; stress indices require stated wet/dry baselines. | A warmer canopy can be a sign of reduced cooling through water loss. Sunlight and wind can also change canopy temperature. |
-| <a id="veg-016"></a>[VEG-016](EII_Reference_Register.md#veg-016) | Seasonal plant timing | Repeated observations or fitted vegetation-index curves, day-of-year and duration in days; declare event threshold. | Shows when plants start growing or lose their leaves. Changes may reflect weather, plant type or farming schedules. |
-| <a id="veg-017"></a>[VEG-017](EII_Reference_Register.md#veg-017) | Plant species and crop varieties | Botanical counts, cover estimates or validated molecular assignments, taxa and proportions. | Shows which plants or crop varieties are present. This helps interpret differences in habitat, growth and resource needs. |
-| <a id="ter-010"></a>[TER-010](EII_Reference_Register.md#ter-010) | Tree height | Field range measurements or canopy-minus-ground heights, m. | Shows tree size and stand development. Estimating biomass also requires information about species and tree shape. |
-| <a id="ter-011"></a>[TER-011](EII_Reference_Register.md#ter-011) | Canopy volume | Point-cloud crown segmentation and volume algorithm, m³; declare convex hull/voxel method. | Shows the space occupied by a tree crown. This is not the same as the mass of wood or the area of leaves. |
-| <a id="ter-012"></a>[TER-012](EII_Reference_Register.md#ter-012) | Canopy gaps and crown cover | Mapped crown/gap area divided by plot area, %, with minimum gap definition. | Shows openings and crown cover in a canopy. This helps assess light and regeneration, but does not describe all vegetation layers. |
-| <a id="ter-013"></a>[TER-013](EII_Reference_Register.md#ter-013) | Vegetation layers | Height-bin returns, foliage profiles or stated structural diversity index, proportions or index. | Shows how vegetation is arranged at different heights. This helps assess habitat layers and the paths fire might follow. |
-| <a id="hyd-002"></a>[HYD-002](EII_Reference_Register.md#hyd-002) | Canopy moisture index (NDMI) | (NIR-SWIR1)/(NIR+SWIR1), dimensionless; declare wavelengths and alias conventions. | Can indicate changes in canopy moisture. Plant type, leaf cover and exposed soil also affect the signal. |
-| <a id="dis-012"></a>[DIS-012](EII_Reference_Register.md#dis-012) | Detailed spectral signatures | Spectral radiance/reflectance by wavelength; traits require calibrated inversion, declared trait units. | Can help estimate materials or plant traits from detailed spectra. Independent samples are needed to check the interpretation. |
-| <a id="veg-018"></a>[VEG-018](EII_Reference_Register.md#veg-018) | Absorbed photosynthetic light | Above/below-canopy radiation measurements or validated retrieval, fraction; specify green versus total absorption. | Shows the share of useful light vegetation absorbs. Absorbing light does not mean all of it becomes plant growth. |
-| <a id="veg-019"></a>[VEG-019](EII_Reference_Register.md#veg-019) | Chlorophyll fluorescence | Spectrally resolved retrieval, mW/m²/sr/nm with wavelength/geometry specified. | Can help study how vegetation responds during photosynthesis. The signal cannot be converted to carbon uptake without a suitable model. |
-| <a id="veg-020"></a>[VEG-020](EII_Reference_Register.md#veg-020) | Plant water status and leaf gas exchange | Pressure chamber, MPa; porometer/gas exchange, mol H₂O/m²/s, recording time and conditions. | Helps assess plant water status and control of water loss. Time of day, weather and plant type affect the response. |
-| <a id="veg-021"></a>[VEG-021](EII_Reference_Register.md#veg-021) | Plant deaths and new establishment | Repeated mapped stems/seedlings, %/year or individuals/ha/year. | Shows plant deaths and new establishment. Seedlings may not survive to become mature plants. |
-| <a id="veg-022"></a>[VEG-022](EII_Reference_Register.md#veg-022) | Root mass and depth | Washed cores, ingrowth methods or calibrated imaging, g/m² by depth; distinguish live/dead and diameter classes. | Shows root mass and how deep roots occur. Root mass alone does not measure nutrient or water uptake. |
-
-<a id="d08"></a>
-
-## Ecological interactions
-
-| ID | Indicator | What it measures | What it indicates |
-|---|---|---|---|
-| <a id="mic-014"></a>[MIC-014](EII_Reference_Register.md#mic-014) | Root-associated fungi | Fungal assignments and microscopy of colonised root length, %; report structures and host. | Shows fungi associated with roots or how much root is colonised. This does not by itself show nutrient transfer or plant benefit. |
-| <a id="mic-015"></a>[MIC-015](EII_Reference_Register.md#mic-015) | Microbes around roots | Paired rhizosphere/bulk samples and taxon/function profiles, proportions or dissimilarity. | Shows how microbes near roots differ from those in surrounding soil. Other soil differences may also explain the pattern. |
-| <a id="mic-016"></a>[MIC-016](EII_Reference_Register.md#mic-016) | Potential harmful or beneficial microbes | Validated taxon/virulence assignments or qPCR, detection and copies/g; retain strain and reference uncertainty. | Flags organisms or genes that may be associated with disease or benefits. Confirming either effect needs additional tests. |
-| <a id="bio-008"></a>[BIO-008](EII_Reference_Register.md#bio-008) | Pollinator numbers and flower visits | Standardised counts per transect/time and visits/flower/hour, with weather and species recorded. | Shows pollinator numbers or flower visits. Visits alone do not prove successful pollination. |
-| <a id="bio-009"></a>[BIO-009](EII_Reference_Register.md#bio-009) | Predation and pest control | Sentinel-prey loss/time and paired exclusion/open treatment effects, %/day or pest-density difference. | Helps assess predators' contribution to pest control. Missing prey and changes in pests need careful checking. |
-| <a id="bio-013"></a>[BIO-013](EII_Reference_Register.md#bio-013) | Food webs and ecological networks | Observed/traced feeding or interaction events and link weights; calculate connectance/modularity with method declared. | Helps describe who interacts with or eats whom. Species occurring together are not automatically interacting. |
-| <a id="int-001"></a>[INT-001](EII_Reference_Register.md#int-001) | Pollen delivery and pollen limitation | Stigma pollen counts; supplemented-versus-control fruit/seed set, counts and effect size. | Helps assess pollen delivery and whether extra pollen improves reproduction. Water and nutrient shortages can also limit seed production. |
-| <a id="int-002"></a>[INT-002](EII_Reference_Register.md#int-002) | Fruit and seed formation | Repeated reproductive counts, % with denominator and abortion timing declared. | Shows how many flowers produce fruits or seeds. Pollination, weather, nutrition and damage all affect the result. |
-| <a id="int-003"></a>[INT-003](EII_Reference_Register.md#int-003) | Plant consumption by herbivores | Repeated leaf-area loss or biomass removal, %/time; distinguish herbivore from disease damage. | Shows plant tissue eaten or damaged by herbivores. Existing damage may not reflect the current feeding rate. |
-| <a id="int-004"></a>[INT-004](EII_Reference_Register.md#int-004) | Competition between organisms | Neighbour-removal/addition experiment, growth/reproduction effect size. | Tests whether neighbours reduce a plant's growth or reproduction. Finding species together does not prove competition. |
-| <a id="int-005"></a>[INT-005](EII_Reference_Register.md#int-005) | Benefits between organisms | Controlled neighbour/nurse treatment comparisons, survival/growth effect size. | Tests whether one organism helps another grow or survive. The benefit can change with conditions and life stage. |
-| <a id="int-006"></a>[INT-006](EII_Reference_Register.md#int-006) | Nutrient transfer through root fungi | Isotopic tracing/compartment controls and plant nutrient recovery, mass/time or fraction. | Tests nutrient transfer associated with root fungi. Fungal presence alone does not prove transfer or benefit to the plant. |
-| <a id="int-007"></a>[INT-007](EII_Reference_Register.md#int-007) | Seed dispersal and removal | Tracked seeds, traps or validated molecular assignments, distance and fraction/time. | Shows how seeds move or disappear. Removed seeds may be eaten rather than dispersed successfully. |
-| <a id="int-008"></a>[INT-008](EII_Reference_Register.md#int-008) | Diet and feeding relationships | Gut/faecal metabarcoding, observation or isotopes, detections or estimated contribution with mixing assumptions. | Helps identify feeding relationships. DNA and isotope evidence need careful interpretation to estimate dietary contributions. |
-| <a id="int-009"></a>[INT-009](EII_Reference_Register.md#int-009) | Disease suppression tests | Matched inoculation/control disease incidence or severity, % or effect size. | Tests whether a soil or microbial treatment reduces disease. A successful laboratory test does not guarantee the same field result. |
-
-<a id="d09"></a>
-
-## Biogeochemical cycles
-
-| ID | Indicator | What it measures | What it indicates |
-|---|---|---|---|
-| <a id="mic-009"></a>[MIC-009](EII_Reference_Register.md#mic-009) | Carbon-breakdown genes | Shotgun/qPCR gene counts normalised to stated denominator; report annotation release and pathway completeness. | Shows genetic potential to break down organic material. Genes alone do not show how fast decomposition is happening. |
-| <a id="mic-010"></a>[MIC-010](EII_Reference_Register.md#mic-010) | Nitrogen-fixation genes | nifH or validated pathway genes, copies/g or normalised abundance; evaluate homolog specificity. | Shows genetic potential to use nitrogen from the air. Measuring actual nitrogen fixation requires a separate process test. |
-| <a id="mic-011"></a>[MIC-011](EII_Reference_Register.md#mic-011) | Nitrification genes | amoA and suitable pathway markers, copies/g or normalised abundance, with archaeal/bacterial/comammox coverage. | Shows genetic potential for certain nitrogen transformations. It does not measure how fast those transformations occur. |
-| <a id="mic-012"></a>[MIC-012](EII_Reference_Register.md#mic-012) | Denitrification genes | nirK/nirS, nor, nosZ and other stated genes, normalised abundance or copies/g; separate pathway steps. | Shows genetic potential to convert nitrate into gases. Actual gas production depends on conditions and the steps present in the pathway. |
-| <a id="mic-013"></a>[MIC-013](EII_Reference_Register.md#mic-013) | Phosphorus-acquisition genes | Annotated phosphatase, transport and other validated marker genes; distinguish mineralisation from solubilisation. | Shows possible genetic capacity to obtain or release phosphorus. It does not measure phosphorus made available to plants. |
-| <a id="mic-018"></a>[MIC-018](EII_Reference_Register.md#mic-018) | Pollutant-breakdown genes | Validated marker/pathway abundance, copies/g or normalised counts; specify chemical target. | Shows genetic potential to transform named pollutants. Actual removal and whether products remain harmful need separate tests. |
-| <a id="mic-023"></a>[MIC-023](EII_Reference_Register.md#mic-023) | Nitrogen transformation rates | Incubation changes in mineral-N, mg N/kg/day, or isotope-based gross rates; distinguish net and gross processes. | Measures nitrogen changes during a defined test. Laboratory conditions may differ from those in the field. |
-| <a id="mic-024"></a>[MIC-024](EII_Reference_Register.md#mic-024) | Litter decomposition | Litter dry-mass loss, %, or fitted decay constant k, time⁻¹; correct handling losses and describe bags/substrate. | Shows how quickly litter loses mass. Microbes, animals, leaching and physical breakdown can all contribute. |
-| <a id="fun-002"></a>[FUN-002](EII_Reference_Register.md#fun-002) | Carbon storage change | Comparable stocks over time, Mg C/ha/year, with transfers and fluxes for net balance. | Helps assess changes in stored carbon. A gain in one pool does not prove a net climate benefit for the whole system. |
-| <a id="fun-003"></a>[FUN-003](EII_Reference_Register.md#fun-003) | Nutrient retention and leaching | Input/output water and nutrient mass balance, kg N/P/ha/year; drainage flux × concentration for leaching. | Helps assess nutrients retained or lost through water. Changes in concentration alone do not show the total amount retained. |
-| <a id="cyc-001"></a>[CYC-001](EII_Reference_Register.md#cyc-001) | Net ecosystem carbon dioxide exchange | Eddy covariance/chambers and flux processing, µmol/m²/s or g C/m²/year. | Shows net carbon dioxide exchange between an ecosystem and air. Harvests and other carbon movements are needed for a full carbon balance. |
-| <a id="cyc-002"></a>[CYC-002](EII_Reference_Register.md#cyc-002) | Nitrous oxide exchange | Chamber or micrometeorological flux, µg N/m²/h, with N versus N₂O mass convention explicit. | Shows nitrous oxide released or taken up. Short-lived emission bursts can be missed by occasional measurements. |
-| <a id="cyc-003"></a>[CYC-003](EII_Reference_Register.md#cyc-003) | Methane exchange | Gas flux observations, mg CH₄/m²/day, with temporal coverage. | Shows net methane exchange. Production, consumption and gas movement all contribute to the measured result. |
-| <a id="cyc-004"></a>[CYC-004](EII_Reference_Register.md#cyc-004) | Biological nitrogen-fixation rate | Validated ¹⁵N₂ incorporation or calibrated alternative, mg N/kg/time or kg N/ha/year. | Measures nitrogen added through biological fixation. Scaling a small test to a field introduces uncertainty. |
-| <a id="cyc-005"></a>[CYC-005](EII_Reference_Register.md#cyc-005) | Denitrification rate | Isotope or validated gas assay, mass N/area/time; distinguish total N gases from N₂O alone. | Measures conversion of nitrate into nitrogen gases. Nitrous oxide alone does not show the whole process. |
-| <a id="cyc-006"></a>[CYC-006](EII_Reference_Register.md#cyc-006) | Phosphorus release from organic matter | Time-resolved P fractions/tracers, mg P/kg/time. | Measures release of inorganic phosphorus from organic material. Binding to soil and microbial uptake can affect the net result. |
-| <a id="cyc-007"></a>[CYC-007](EII_Reference_Register.md#cyc-007) | Nitrogen and phosphorus balance | Fertiliser, fixation, deposition, harvest, runoff/leaching and gas terms, kg N/P/ha/year. | Shows whether recorded nutrient inputs exceed outputs. Missing losses or inputs can distort the balance. |
-| <a id="cyc-008"></a>[CYC-008](EII_Reference_Register.md#cyc-008) | Nutrient recovery before leaf fall | Matched green/senescent tissue nutrient assays, %, correcting for leaf mass loss. | Shows how much nutrient plants recover before leaves fall. Leaf mass changes and sampling time affect the estimate. |
-| <a id="cyc-009"></a>[CYC-009](EII_Reference_Register.md#cyc-009) | Pollutant transformation | Repeated parent/metabolite mass balance or isotope mineralisation, %/time or mass/time. | Tests whether a pollutant is transformed. Disappearance alone may mean storage or movement, and breakdown products may still be harmful. |
-| <a id="cyc-010"></a>[CYC-010](EII_Reference_Register.md#cyc-010) | Dissolved organic carbon export | Filtered DOC assay × discharge, mg C/L and kg C/time, with filter definition. | Shows carbon carried away in dissolved form by water. Concentration alone does not show the total amount exported. |
-
-<a id="d10"></a>
-
-## Landscape ecology
-
-| ID | Indicator | What it measures | What it indicates |
-|---|---|---|---|
-| <a id="ter-001"></a>[TER-001](EII_Reference_Register.md#ter-001) | Ground elevation | Survey or ground-classified LiDAR heights, m; declare datum, grid size and ground classification. | Provides the ground heights needed to understand terrain. Heights of trees and buildings must be separated from the ground. |
-| <a id="ter-002"></a>[TER-002](EII_Reference_Register.md#ter-002) | Slope gradient | DTM derivatives, degrees or %; record neighbourhood and grid resolution. | Shows how steep the ground is. Steeper ground may favour runoff, but slope alone does not measure soil loss. |
-| <a id="ter-003"></a>[TER-003](EII_Reference_Register.md#ter-003) | Slope direction | DTM orientation, degrees clockwise from north; undefined on flat terrain. | Shows which direction a slope faces. This helps explain sunlight and exposure, although nearby shade also matters. |
-| <a id="ter-008"></a>[TER-008](EII_Reference_Register.md#ter-008) | Terrace shape and wall condition | Surveyed terrace width, wall height, slope and damage frequency, m and %; retain component fields. | Helps identify terraces that need maintenance. Measurements and visible damage alone do not establish structural safety. |
-| <a id="ter-014"></a>[TER-014](EII_Reference_Register.md#ter-014) | Ground and canopy change | Height or volume differences, m or m³, with a spatial level-of-detection threshold. | Shows changes in ground or canopy height between surveys. Alignment errors and seasonal differences can look like real change. |
-| <a id="bio-006"></a>[BIO-006](EII_Reference_Register.md#bio-006) | Habitat fragmentation | Class map and patch metrics, ha, count or index; record grain, extent and adjacency. | Shows how habitat is divided into patches. The consequences depend on the habitat and species being studied. |
-| <a id="bio-007"></a>[BIO-007](EII_Reference_Register.md#bio-007) | Habitat connectivity | Habitat distances, resistance surfaces and declared graph/circuit model; validate with movement/genetic evidence. | Suggests possible movement routes between habitats. Animals or plants may not actually use the mapped connections. |
-| <a id="dis-004"></a>[DIS-004](EII_Reference_Register.md#dis-004) | Land cover and land use | Validated imagery classes and independent management records, categorical with class probabilities/accuracy. | Shows surface cover or recorded land use. Satellite images do not always reveal how land is managed. |
-| <a id="dis-005"></a>[DIS-005](EII_Reference_Register.md#dis-005) | Land-cover change rate | Comparable validated class maps, ha/year or %/year; account for class and algorithm changes. | Shows changes between land-cover classes. Different mapping methods can create apparent changes that are not real. |
-| <a id="fun-008"></a>[FUN-008](EII_Reference_Register.md#fun-008) | Field margins and hedgerows | Mapped length/width, m, area, ha, and botanical/structural attributes. | Shows the amount and condition of field-edge vegetation. Length alone does not prove habitat quality or effective filtering. |
-| <a id="lan-001"></a>[LAN-001](EII_Reference_Register.md#lan-001) | Habitat edges and interior area | Validated patch polygons, m/ha and ha; declare focal class, grain and edge rule. | Shows habitat edges and remaining interior areas. Effects depend on the species and the distance at which edges matter. |
-| <a id="lan-002"></a>[LAN-002](EII_Reference_Register.md#lan-002) | Landscape mix and diversity | Harmonised classes and area weights, proportions and specified diversity index. | Shows the mix of land or habitat types. A varied landscape does not automatically contain more species or work better ecologically. |
-| <a id="lan-003"></a>[LAN-003](EII_Reference_Register.md#lan-003) | Streamside vegetation buffers | Stream/vegetation maps and field checks, m, ha and % continuity. | Shows the width and continuity of vegetation beside water. Width alone does not prove effective nutrient filtering or flood protection. |
-| <a id="lan-004"></a>[LAN-004](EII_Reference_Register.md#lan-004) | Movement barriers | Roads, dams/fences and verified passage data, barriers/km or crossing probability. | Shows obstacles to movement and how passable they may be. The same barrier can affect different species differently. |
-| <a id="lan-005"></a>[LAN-005](EII_Reference_Register.md#lan-005) | Burned or converted habitat area | Validated event/transition polygons over habitat maps, ha and % affected. | Shows how much of each habitat has burned or changed use. Errors in habitat and event maps affect the totals. |
-| <a id="lan-006"></a>[LAN-006](EII_Reference_Register.md#lan-006) | Terrain position and shape | DTM derivatives or local elevation contrast, m, index or curvature units as defined. | Helps describe ridges, hollows and curved slopes. Terrain shape suggests conditions but does not directly measure soil properties. |
-
-<a id="d11"></a>
-
-## Ecosystem functioning
-
-| ID | Indicator | What it measures | What it indicates |
-|---|---|---|---|
-| <a id="fun-001"></a>[FUN-001](EII_Reference_Register.md#fun-001) | Plant carbon production (GPP/NPP) | Carbon flux/biomass observations and partitioning/model, g C/m²/year; record whether GPP or NPP. | Helps assess carbon fixed by plants and carbon retained for growth. These quantities differ, and often require modelling. |
-| <a id="fun-012"></a>[FUN-012](EII_Reference_Register.md#fun-012) | Soil-health score | Named variables, weights, transformations and missing-data rules, dimensionless declared score. | Combines several soil measurements into a score. The chosen measures and weights matter, and there is no universal soil-health score. |
-| <a id="fun-013"></a>[FUN-013](EII_Reference_Register.md#fun-013) | Ecosystem-condition score | Explicit extent, composition, structure and function metrics with weights, score and uncertainty. | Summarises ecosystem condition against a chosen reference. Results depend on what is measured and the reference used. |
-| <a id="fun-015"></a>[FUN-015](EII_Reference_Register.md#fun-015) | Net ecosystem production–respiration balance | Aquatic oxygen/CO₂ time series with gas exchange, or validated flux balance, mass/area/time. | Shows the balance between ecosystem production and respiration. Water movement and gas exchange must be included in aquatic estimates. |
-| <a id="fun-016"></a>[FUN-016](EII_Reference_Register.md#fun-016) | Food-chain transfer efficiency | Comparable production/energy estimates, %, with food-web and spatial boundary. | Helps estimate how much production passes between feeding levels. The ratio of standing biomass is not the same as energy-transfer efficiency. |
-| <a id="fun-017"></a>[FUN-017](EII_Reference_Register.md#fun-017) | Combined ecosystem functions | Named function measurements and declared averaging/threshold/ordination method, score or number above threshold. | Combines evidence about several ecosystem functions. The selected functions and scoring method affect the result. |
-| <a id="fun-018"></a>[FUN-018](EII_Reference_Register.md#fun-018) | Water purification | Matched inflow/outflow concentration and flow, % and mass/time including retained/transformed fate. | Shows how much of a named pollutant a system removes. Dilution or temporary storage should not be counted as permanent removal. |
-| <a id="fun-019"></a>[FUN-019](EII_Reference_Register.md#fun-019) | Ecosystem cooling | Matched shaded/open or intervention/control temperature observations, °C, with weather/time controls. | Helps assess cooling associated with vegetation or habitat. Comparable weather and control locations are needed to isolate the effect. |
-| <a id="fun-020"></a>[FUN-020](EII_Reference_Register.md#fun-020) | Soil-function shortfalls | Function-specific measurements and uncertainty, native units or standardised differences, kept disaggregated. | Shows which soil functions fall below chosen references. Different functions may show different strengths and weaknesses. |
-
-<a id="d12"></a>
-
-## Ecological resilience
-
-| ID | Indicator | What it measures | What it indicates |
-|---|---|---|---|
-| <a id="mic-017"></a>[MIC-017](EII_Reference_Register.md#mic-017) | Microbial stress-response genes | Annotated osmotic, oxidative or drought-associated genes, normalised abundance. | Shows genes that may help microbes respond to stress. Their presence does not prove the community will withstand drought or salt. |
-| <a id="dis-001"></a>[DIS-001](EII_Reference_Register.md#dis-001) | Burn ratio (NBR) | (NIR-SWIR2)/(NIR+SWIR2), dimensionless; dNBR is pre-fire minus post-fire NBR. | Helps locate fire-affected vegetation and compare burn impacts. The index needs field checks to estimate severity reliably. |
-| <a id="dis-002"></a>[DIS-002](EII_Reference_Register.md#dis-002) | Fire fuel load and arrangement | Dry live/dead fuel mass, Mg/ha; height/spacing and moisture observations, m and %. | Helps assess fuel that could carry a fire. Weather, ignition and fuel moisture also influence fire behaviour. |
-| <a id="dis-003"></a>[DIS-003](EII_Reference_Register.md#dis-003) | Fire events and recurrence | Validated event records/burn perimeters, dates, ha and years between events. | Shows recorded fire events and intervals between them. Satellite hotspots are not the same as fire boundaries. |
-| <a id="dis-009"></a>[DIS-009](EII_Reference_Register.md#dis-009) | Recovery after disturbance | Repeat soil/vegetation measurements, baseline-normalised effect, slope or time to threshold. | Helps track recovery after disturbance. Greener vegetation does not necessarily mean that species, soils and functions have recovered. |
-| <a id="dis-010"></a>[DIS-010](EII_Reference_Register.md#dis-010) | Future climate exposure and suitability | Scenario ensemble, downscaling and explicit suitability model, probability or change in relevant variable. | Shows possible future conditions under stated scenarios. These are model estimates, not observations of what will happen. |
-| <a id="res-001"></a>[RES-001](EII_Reference_Register.md#res-001) | Resistance to disturbance | Matched baseline/reference and disturbance observations, ratio or change with formula declared. | Shows how much a measured property changes during disturbance. Resistance may differ between species, soils and functions. |
-| <a id="res-002"></a>[RES-002](EII_Reference_Register.md#res-002) | Recovery speed and time | Repeated response trajectory, change/time or time to threshold with censoring if unrecovered. | Shows how quickly a measured property returns towards a reference. The chosen baseline and survey timing affect recovery estimates. |
-| <a id="res-003"></a>[RES-003](EII_Reference_Register.md#res-003) | Variation and stability over time | Repeat data, variance, CV or mean/SD with sampling interval and trend treatment. | Shows how much a property varies over time. A consistently degraded system can also have low variability. |
-| <a id="res-004"></a>[RES-004](EII_Reference_Register.md#res-004) | Differences in species responses | Species/function time series and declared covariance/asynchrony metric. | Shows whether species respond differently over time. Different responses may help buffer change, but this needs actual time-series evidence. |
-| <a id="res-005"></a>[RES-005](EII_Reference_Register.md#res-005) | Recovery after fire | Repeat matched community/process measures against pre-fire/reference, distance or recovery time. | Tracks species and functions after fire. Green cover can return before the original community or functions recover. |
-| <a id="res-006"></a>[RES-006](EII_Reference_Register.md#res-006) | Possible early-warning signals | Long standardised series, lag autocorrelation/variance or other specified metric with detrending/null tests. | Flags patterns that might precede a major change. Noise and changing external conditions can produce false warnings. |
-| <a id="res-007"></a>[RES-007](EII_Reference_Register.md#res-007) | Uncertainty in scenario predictions | Validated ensemble outputs, distributions and variance components in target-variable units. | Shows how predictions change with scenarios and assumptions. The tested models may not cover every source of uncertainty. |
-
-<a id="d13"></a>
-
-## Agricultural ecology
-
-| ID | Indicator | What it measures | What it indicates |
-|---|---|---|---|
-| <a id="fun-004"></a>[FUN-004](EII_Reference_Register.md#fun-004) | Crop yield and stability | Harvest dry/standard-moisture mass per area, Mg/ha; multi-year CV or specified stability metric. | Shows crop output and how much it varies between years. Weather and inputs affect results, so stable yields alone do not prove ecological resilience. |
-| <a id="fun-005"></a>[FUN-005](EII_Reference_Register.md#fun-005) | Groundcover duration | Repeated cover fractions and days above a stated cover threshold, days/year; distinguish green and residue cover. | Shows how long vegetation or residues protect the soil. Cover can also compete with crops for water. |
-| <a id="fun-006"></a>[FUN-006](EII_Reference_Register.md#fun-006) | Grazing intensity | Animal-unit days/ha plus forage removal/utilisation, %, with grazing season and feed imports. | Helps compare grazing pressure. Whether it is excessive depends on forage supply, season and vegetation response. |
-| <a id="fun-007"></a>[FUN-007](EII_Reference_Register.md#fun-007) | Water, fertiliser and pesticide inputs | Metered water, m³/ha; nutrients, kg N/P/K/ha; active ingredients, kg/ha, with dates/formulations. | Shows water, fertiliser and pesticide inputs. Quantities alone do not show benefits, losses or toxicity. |
-| <a id="agr-001"></a>[AGR-001](EII_Reference_Register.md#agr-001) | Crop nitrogen-use efficiency | Yield/N-input or fertilised-minus-control yield/N-input, kg product/kg N; label partial factor productivity versus agronomic efficiency. | Helps compare crop output or response per nitrogen input. The chosen efficiency measure does not directly show nitrogen losses. |
-| <a id="agr-002"></a>[AGR-002](EII_Reference_Register.md#agr-002) | Crop water productivity | Harvest mass divided by ET, irrigation or total supply, kg/m³ with denominator declared. | Shows crop output per amount of water supplied or used. Higher farm efficiency does not necessarily mean less basin-wide water consumption. |
-| <a id="agr-003"></a>[AGR-003](EII_Reference_Register.md#agr-003) | Pesticide hazard and risk | Application records, active ingredients and named toxicity/exposure model, declared score. | Helps screen pesticide hazards or modelled risks. Applied mass alone does not describe toxicity or actual exposure. |
-| <a id="agr-004"></a>[AGR-004](EII_Reference_Register.md#agr-004) | Pest numbers and crop damage | Standardised trap/scout counts and damaged tissue/production fraction, counts/area and %. | Shows pest numbers or crop damage. Trap counts do not directly tell us the likely yield loss. |
-| <a id="agr-005"></a>[AGR-005](EII_Reference_Register.md#agr-005) | Crop disease incidence and severity | Confirmed diagnostics and field scoring, % plants and % tissue or declared scale. | Shows how common or severe crop disease is. Similar symptoms can have non-disease causes, so diagnosis matters. |
-| <a id="agr-006"></a>[AGR-006](EII_Reference_Register.md#agr-006) | Crop and rotation diversity | Crop identities, area shares and rotation records, richness or declared diversity metric. | Shows the variety of crops and rotations. Diversity alone does not prove better yields, resilience or lower input use. |
-| <a id="agr-007"></a>[AGR-007](EII_Reference_Register.md#agr-007) | Mixed-crop land productivity | Σ(intercrop component yield/monocrop reference yield), dimensionless, using matched seasons and inputs. | Compares land productivity of mixed crops with separate crops. The comparison needs suitable reference yields and comparable inputs. |
-| <a id="agr-008"></a>[AGR-008](EII_Reference_Register.md#agr-008) | Nutrients removed in harvest | Harvest dry mass × nutrient concentration, kg N/P/K/ha/season. | Shows nutrients removed in harvests. Other nutrient inputs and losses are needed for the whole farm balance. |
-| <a id="agr-009"></a>[AGR-009](EII_Reference_Register.md#agr-009) | Forage use and imported feed | Before/after forage dry mass and feed accounts, % utilisation and % imported dry matter/nutrients. | Helps assess forage use and reliance on imported feed. Trampling, waste and impacts outside the farm also matter. |
-| <a id="agr-010"></a>[AGR-010](EII_Reference_Register.md#agr-010) | Tillage and machinery disturbance | Passes, implement depth, axle load, area and dates, declared component units. | Shows recorded disturbance from machinery or tillage. Actual effects need soil measurements, not just counts of operations. |
-| <a id="agr-011"></a>[AGR-011](EII_Reference_Register.md#agr-011) | Farm nutrient and energy balance | Inputs/outputs and inventory changes, kg N/P/year and MJ/year; document allocation/imports. | Shows farm nutrient and energy inputs and outputs. Missing imports, losses and differences in products can change the comparison. |
-
-<a id="d14"></a>
-
-## Human–ecological systems
-
-| ID | Indicator | What it measures | What it indicates |
-|---|---|---|---|
-| <a id="ter-015"></a>[TER-015](EII_Reference_Register.md#ter-015) | Built-feature geometry | Surveyed footprints, dimensions and volumes, m² and m³; classify feature type. | Shows the size and position of built features. Their shape alone does not tell us how much energy or material people use. |
-| <a id="fun-009"></a>[FUN-009](EII_Reference_Register.md#fun-009) | Settlements and infrastructure | Validated footprints and networks, ha, % built-up or km/km²; population products are modelled separately. | Shows the spread of settlements and infrastructure. Their ecological effects depend on use, design and location. |
-| <a id="fun-010"></a>[FUN-010](EII_Reference_Register.md#fun-010) | Available biomass and materials | Measured stocks and replenishment/harvest models, Mg and Mg/year, with ownership/ecological/access exclusions. | Helps estimate available biomass or materials. The amount present is not necessarily the amount that can be harvested sustainably. |
-| <a id="fun-011"></a>[FUN-011](EII_Reference_Register.md#fun-011) | Ecological footprint and resource demand | Resource-flow accounts or footprint conversion, physical units or global hectares; declare accounting method and boundary. | Helps compare resource demand. Results depend on the accounting method and do not directly measure local ecosystem condition. |
-| <a id="hum-001"></a>[HUM-001](EII_Reference_Register.md#hum-001) | Sealed ground cover | Validated land-surface classification/field verification, %, with distinction between built-up and sealed surfaces. | Shows how much ground is sealed. Runoff also depends on drainage connections and whether some built surfaces let water through. |
-| <a id="hum-002"></a>[HUM-002](EII_Reference_Register.md#hum-002) | Land-use intensity | Harvest frequency, stocking, input or traffic measures per area/time; retain separate components or name index. | Helps compare the intensity of recorded land use. Land-use names alone do not show the level of pressure. |
-| <a id="hum-003"></a>[HUM-003](EII_Reference_Register.md#hum-003) | Material use and recycling | Mass balance by material, Mg/year and recycled/input fraction, excluding double counting. | Shows material use and recycling. A high recycled share does not necessarily mean low overall resource demand. |
-| <a id="hum-004"></a>[HUM-004](EII_Reference_Register.md#hum-004) | Energy demand and return | Metered/embodied energy accounting, MJ/year and output/input ratio with system boundary. | Shows energy demand or energy returned for the investment. Energy sources and the services produced affect fair comparisons. |
-| <a id="hum-005"></a>[HUM-005](EII_Reference_Register.md#hum-005) | Water withdrawal and consumption | Meters and water balance, m³/year with source and return-flow timing. | Shows water taken from sources and water not returned. Withdrawal and consumption have different effects on water availability. |
-| <a id="hum-006"></a>[HUM-006](EII_Reference_Register.md#hum-006) | Lifecycle greenhouse-gas emissions | Activity data × versioned emission factors and GWP horizon, kg CO₂e/unit service/product. | Helps compare climate emissions per product or service. Results depend on which lifecycle stages and emissions are included. |
-| <a id="hum-007"></a>[HUM-007](EII_Reference_Register.md#hum-007) | Artificial light at night | Calibrated radiance/illuminance and spectrum, W/m²/sr or lux; declare viewing and time. | Shows artificial light exposure at night. Satellite brightness may differ from the light experienced by organisms. |
-| <a id="hum-008"></a>[HUM-008](EII_Reference_Register.md#hum-008) | Human-made noise | Calibrated sound records, dB referenced to stated medium/pressure; weighting and time interval explicit. | Shows exposure to human-made noise. Different species hear different frequencies and may respond differently. |
-| <a id="hum-009"></a>[HUM-009](EII_Reference_Register.md#hum-009) | Dependence on imported resources | Physical supply and demand accounts, % or mass/year with trade origin. | Shows reliance on resources from outside an area. Import dependence alone does not establish environmental sustainability. |
-
-<a id="d15"></a>
-
-## Planetary and regional boundaries
-
-| ID | Indicator | What it measures | What it indicates |
-|---|---|---|---|
-| <a id="fun-014"></a>[FUN-014](EII_Reference_Register.md#fun-014) | Ecological boundary exceedance | Observed/modelled variable and versioned threshold; report signed difference or appropriate ratio with uncertainty. | Shows whether a chosen measure is above or below a stated threshold. Global thresholds cannot simply be applied to a farm or region. |
-| <a id="pb-001"></a>[PB-001](EII_Reference_Register.md#pb-001) | Global carbon dioxide and climate forcing | Global CO₂ concentration, ppm, and/or forcing, W/m², with reference baseline and threshold source. | Helps compare global climate pressures with a stated framework. Local carbon dioxide readings are not a global boundary measure. |
-| <a id="pb-002"></a>[PB-002](EII_Reference_Register.md#pb-002) | Large-scale biodiversity and function loss | Named extinction-rate estimate and framework-specific functional control variable; record version and uncertainty. | Helps assess large-scale loss of biodiversity and ecosystem function. Local species counts cannot represent the whole global picture. |
-| <a id="pb-003"></a>[PB-003](EII_Reference_Register.md#pb-003) | Large-scale nitrogen and phosphorus pressures | Global/regional fixation, application or ocean-export budgets, mass/year, under cited framework. | Helps assess large-scale human changes to nitrogen and phosphorus flows. A farm nutrient surplus is a different measure. |
-| <a id="pb-004"></a>[PB-004](EII_Reference_Register.md#pb-004) | Large-scale river-flow and soil-moisture change | Spatially aggregated streamflow/soil-moisture anomalies under the cited version's procedure. | Helps assess large-scale changes in river flows and soil moisture. Water withdrawals and drought indices measure different things. |
-| <a id="pb-005"></a>[PB-005](EII_Reference_Register.md#pb-005) | Forest and biome extent change | Harmonised biome-specific land/forest maps and specified reference fractions. | Helps assess changes in forest or biome extent. Tree cover alone does not show native forest condition. |
-| <a id="pb-006"></a>[PB-006](EII_Reference_Register.md#pb-006) | Stratospheric ozone | Validated atmospheric column retrieval/observations, Dobson units, with latitude/season. | Helps assess the ozone layer's protection. Ozone near the ground is a different environmental issue. |
-| <a id="pb-007"></a>[PB-007](EII_Reference_Register.md#pb-007) | New chemical releases and assessment coverage | Chemical release inventories, mass/time and declared assessment/coverage metrics. | Helps track releases of new chemicals and how well they are assessed. No single safe concentration applies to all substances. |
-| <a id="pb-008"></a>[PB-008](EII_Reference_Register.md#pb-008) | Ocean acidification | Carbonate chemistry and computed aragonite saturation, dimensionless with reference fraction declared. | Helps assess ocean chemistry affecting shell formation. Local pH alone cannot establish the global boundary measure. |
-| <a id="pb-009"></a>[PB-009](EII_Reference_Register.md#pb-009) | Large-scale aerosol loading | Validated aerosol optical depth or specified hemispheric contrast, dimensionless. | Helps assess large-scale airborne particle effects. Particle mass and their effect on sunlight are different measures. |
-| <a id="pb-010"></a>[PB-010](EII_Reference_Register.md#pb-010) | Departure from regional ecological thresholds | Named variable, reference, threshold derivation and uncertainty in compatible units; report sign/direction. | Shows departure from a locally justified ecological threshold. Global thresholds cannot be transferred automatically to a region. |
-
-## Further reading
-
-- [Complete scientific records and source documentation](EII_Reference_Register.md).
-- [Remote-sensing subset](EII%20-%20Remote%20Sensing.md), retained unchanged from the preceding edition.
-- [Citation metadata](CITATION.cff) and [development changelog](CHANGELOG.md).
+- **0.4.0 — 2026-10-19:** Preserved the supplied v0.1.0 presentation and all original indicator rows; added 115 later indicators for 235 unique records; retained the 15-domain classification and later scientific references. The pasted programme crosswalk is historical material only.
