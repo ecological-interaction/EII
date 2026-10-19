@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this work-in-progress academic research resource, please cite it using this metadata and identify the commit or version consulted."
+type: dataset
+title: "Ecological Indicator Inventory (EII)"
+authors:
+  - family-names: Minchin
+    given-names: Jonathan
+    affiliation: Ecological Interaction
+    orcid: "https://orcid.org/0000-0001-8152-1796"
+repository-code: "https://github.com/ecological-interaction/EII"
+abstract: "Work in Progress — Academic Research Resource. A curated inventory of ecological indicators, working definitions, qualified inferences, classifications, scientific references and candidate observation-source routes. Entries are exploratory research definitions, not verified monitoring standards."
