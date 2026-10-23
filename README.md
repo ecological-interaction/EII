@@ -1,5 +1,9 @@
 # EII — Ecological Indicator Inventory
 
+![EII overview: 235 indicator records across 15 named domains, with scientific presentation and a separately curated remote-sensing subset](assets/diagrams/eii_overview.svg)
+
+*Existing EII taxonomy and document roles; source routes are candidates, not bound observations.* [View full-size diagram](assets/diagrams/eii_overview.svg).
+
 **Work in Progress — Academic Research Resource**
 
 Jonathan Minchin · Ecological Interaction · [ORCID 0000-0001-8152-1796](https://orcid.org/0000-0001-8152-1796).

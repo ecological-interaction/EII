@@ -1,0 +1,65 @@
+%% Authoritative diagram source; fixed-layout hints are consumed by render_eii_overview.py.
+%% @canvas 1200 1120
+%% @title EII — indicator domains and reference views
+%% @description The authoritative Machine Reference contains 235 indicators classified in EII Domain Taxonomy v1.0.0, D01 through D15. One primary domain is assigned to each indicator; secondary-domain relationships are preserved. A scientific presentation contains 235 indicators and a separately curated remote-sensing subset contains 91. Source routes are candidates, not bound observations; the inventory is not a validated monitoring standard.
+%% @box TITLE 40 24 1120 80 heading
+%% @box MACHINE 40 140 1120 100 neutral
+%% @group DOMAINS 40 280 1120 590 sources
+%% @box D01 65 366 325 90 card
+%% @box D02 440 366 325 90 card
+%% @box D03 815 366 325 90 card
+%% @box D04 65 462 325 90 card
+%% @box D05 440 462 325 90 card
+%% @box D06 815 462 325 90 card
+%% @box D07 65 558 325 90 card
+%% @box D08 440 558 325 90 card
+%% @box D09 815 558 325 90 card
+%% @box D10 65 654 325 90 card
+%% @box D11 440 654 325 90 card
+%% @box D12 815 654 325 90 card
+%% @box D13 65 750 325 90 card
+%% @box D14 440 750 325 90 card
+%% @box D15 815 750 325 90 card
+%% @box SCIENTIFIC 40 918 550 100 output
+%% @box SUBSET 610 918 550 100 output
+%% @note 600 1062 Secondary-domain relationships are retained; views are not automatically synchronised.
+%% @note 600 1092 Exploratory inventory, not a validated monitoring standard; source routes remain candidates.
+flowchart TB
+    TITLE["EII — Ecological Indicator Inventory"]
+    MACHINE["Authoritative Machine Reference · 235 indicators<br/>Full descriptions · references · candidate source routes · observation schemas"]
+    subgraph DOMAINS["EII Domain Taxonomy v1.0.0<br/>15 scientific domains · one primary domain per indicator"]
+        direction TB
+        D01["D01 · 14 indicators<br/>Atmosphere and climate"]
+        D02["D02 · 21 indicators<br/>Hydrology"]
+        D03["D03 · 14 indicators<br/>Soil physics"]
+        D04["D04 · 12 indicators<br/>Soil chemistry"]
+        D05["D05 · 19 indicators<br/>Soil biology"]
+        D06["D06 · 15 indicators<br/>Biodiversity"]
+        D07["D07 · 28 indicators<br/>Vegetation"]
+        D08["D08 · 15 indicators<br/>Ecological interactions"]
+        D09["D09 · 20 indicators<br/>Biogeochemical cycles"]
+        D10["D10 · 16 indicators<br/>Landscape ecology"]
+        D11["D11 · 9 indicators<br/>Ecosystem functioning"]
+        D12["D12 · 13 indicators<br/>Ecological resilience"]
+        D13["D13 · 15 indicators<br/>Agricultural ecology"]
+        D14["D14 · 13 indicators<br/>Human–ecological systems"]
+        D15["D15 · 11 indicators<br/>Planetary and regional<br/>boundaries"]
+    end
+    SCIENTIFIC["Scientific Reference Register<br/>Human-readable presentation · 235 indicators"]
+    SUBSET["Remote-sensing subset<br/>Separately curated view · 91 indicators"]
+    TITLE --> MACHINE
+    MACHINE --> DOMAINS
+    DOMAINS --> SCIENTIFIC
+    DOMAINS --> SUBSET
+    classDef heading fill:#cce3f9,stroke:#173b6b,color:#15243d;
+    classDef knowledge fill:#e1f0e6,stroke:#41744d,color:#203d29;
+    classDef method fill:#e1daf0,stroke:#574087,color:#29223e;
+    classDef sources fill:#feeec9,stroke:#a16a16,color:#543a13;
+    classDef card fill:#fef6e3,stroke:#a16a16,color:#302b20;
+    classDef output fill:#eaedf1,stroke:#7c8c9d,color:#25334a;
+    classDef neutral fill:#f8f9fa,stroke:#99a4b0,color:#3a4656;
+    class TITLE heading;
+    class MACHINE neutral;
+    class DOMAINS sources;
+    class D01,D02,D03,D04,D05,D06,D07,D08,D09,D10,D11,D12,D13,D14,D15 card;
+    class SCIENTIFIC,SUBSET output;
