@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EII machine-reference serialization — 0.1 draft, not an ontology or DRM certification",
+  "type": "object",
+  "required": [
+    "metadata",
+    "domains",
+    "indicators",
+    "source_routes",
+    "scientific_references",
+    "observation_schema",
+    "classification_migration",
+    "source_context",
+    "document_views",
+    "source_transcription",
+    "extracted_historical_structures"
+  ],
+  "properties": {
+    "metadata": {
+      "type": "object"
+    },
+    "domains": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15
+    },
+    "indicators": {
+      "type": "array",
+      "minItems": 235,
+      "maxItems": 235,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "domain",
+          "related_domains",
+          "definition",
+          "direct",
+          "inference",
+          "support",
+          "variants"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^EII:[A-Z]{2,3}-[0-9]{3}$"
+          },
+          "domain": {
+            "type": "string",
+            "enum": [
+              "D01",
+              "D02",
+              "D03",
+              "D04",
+              "D05",
+              "D06",
+              "D07",
+              "D08",
+              "D09",
+              "D10",
+              "D11",
+              "D12",
+              "D13",
+              "D14",
+              "D15"
+            ]
+          },
+          "related_domains": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "D01",
+                "D02",
+                "D03",
+                "D04",
+                "D05",
+                "D06",
+                "D07",
+                "D08",
+                "D09",
+                "D10",
+                "D11",
+                "D12",
+                "D13",
+                "D14",
+                "D15"
+              ]
+            }
+          },
+          "support": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "pattern": "^EII:[A-Z]{2,3}-[0-9]{3}$"
+            }
+          },
+          "variants": {
+            "type": "array"
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "source_routes": {
+      "type": "array"
+    },
+    "scientific_references": {
+      "type": "object"
+    },
+    "observation_schema": {
+      "type": "array"
+    },
+    "classification_migration": {
+      "type": "object"
+    },
+    "source_context": {
+      "type": "object"
+    },
+    "document_views": {
+      "type": "object"
+    },
+    "source_transcription": {
+      "type": "object",
+      "required": [
+        "sha256",
+        "markdown"
+      ],
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "markdown": {
+          "type": "string"
+        }
+      }
+    },
+    "extracted_historical_structures": {
+      "type": "array"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -41,16 +41,18 @@ def render():
     for kind, name, _, _, _, _, role in hints:
         x, y, w, h = boxes[name]; style = styles[role]
         assert 0 <= x < x+w <= width and 0 <= y < y+h <= height, name
-        parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" fill="{style["fill"]}" stroke="{style["stroke"]}" stroke-width="{style.get("stroke-width", "1.5")}"/>')
+        dash = ' stroke-dasharray="6 4"' if name == "DRM" else ""
+        parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" fill="{style["fill"]}" stroke="{style["stroke"]}" stroke-width="{style.get("stroke-width", "1.5")}"{dash}/>')
         lines = labels[name].split("<br/>")
-        size = 26 if role == "heading" else 22
-        step = 30 if role == "heading" else 27
-        baseline = y + 36 if kind == "group" else y+h/2-(len(lines)-1)*step/2+size*.35
-        assert baseline + (len(lines)-1)*step + size*.25 < y+h, name
-        for index, line in enumerate(lines):
-            parts.append(f'<text x="{x+w/2:g}" y="{baseline+index*step:g}" font-size="{size}" font-weight="{600 if index == 0 else 400}" fill="{style["color"]}">{escape(line)}</text>')
+        text_hint = re.search(r"^%% @text " + name + r" ([\d.,]+) ([\d.,]+) ([\d,]+)$", source, re.M)
+        assert text_hint is not None, name
+        sizes, offsets, weights = [list(map(float, value.split(","))) for value in text_hint.groups()]
+        assert len(lines) == len(sizes) == len(offsets) == len(weights), name
+        for line, size, offset, weight in zip(lines, sizes, offsets, weights):
+            assert 0 < offset - size * .8 and offset + size * .25 < h, name
+            parts.append(f'<text x="{x+w/2:g}" y="{y+offset:g}" font-size="{size:g}" font-weight="{weight:g}" fill="{style["color"]}">{escape(line)}</text>')
     for x, y, note in re.findall(r"^%% @note (\d+) (\d+) (.+)$", source, re.M):
-        parts.append(f'<text x="{x}" y="{y}" font-size="18" fill="#526174">{escape(note)}</text>')
+        parts.append(f'<text x="{x}" y="{y}" font-size="17" fill="#526174">{escape(note)}</text>')
     parts.append("</g></svg>")
     svg = "\n".join(parts) + "\n"
     ET.fromstring(svg)
